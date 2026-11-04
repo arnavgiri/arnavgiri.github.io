@@ -51,7 +51,7 @@ nav .nav-contact:hover{color:var(--paper);background:var(--accent)}
 .section-desc{font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:610px;margin:17px 0 0}
 .projects{border-top:1px solid var(--rule)}
 .project{padding:26px 0;display:grid;grid-template-columns:74px minmax(0,1fr) minmax(200px,.8fr) 38px;gap:18px;align-items:center;border-bottom:1px solid var(--rule);text-decoration:none;transition:background .18s}
-.project:hover{background:rgba(255,255,255,.35)}
+
 .project-number{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
 .project h3{font-size:clamp(24px,3vw,37px);line-height:1.16;letter-spacing:-.055em;font-weight:630;margin:0 0 8px}
 .project p{margin:0;font-size:13px;line-height:1.5;color:var(--muted)}
