@@ -54,3 +54,12 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify RSS WebSub hub
+        continue-on-error: true
+        run: |
+          curl --fail-with-body --silent --show-error --retry 2 \
+            --request POST \
+            --data-urlencode "hub.mode=publish" \
+            --data-urlencode "hub.url=https://arnavgiri.github.io/feed.xml" \
+            "https://pubsubhubbub.appspot.com/"
+
