@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f4ee">
+<title>Age Calculator — Exact Age in Years, Months & Days | Arnav Giri</title>
+<meta name="description" content="Free age calculator by date of birth. Calculate exact age in years, months and days, age as on any date, total days, weeks and your next birthday.">
+<link rel="canonical" href="https://arnavgiri.github.io/age-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Age Calculator — Exact Age by Date of Birth">
+<meta property="og:description" content="Calculate exact age as on today or any date, with total days and a next birthday countdown. Free and private.">
+<meta property="og:url" content="https://arnavgiri.github.io/age-calculator/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles.css">
+<script src="./app.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator by Arnav Giri","url":"https://arnavgiri.github.io/age-calculator/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Calculate age from date of birth in years, months and days as on today or another date, total days and next birthday."}</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to calculator</a>
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="../" aria-label="Arnav Giri home"><span class="brand-mark">AG</span><span>Arnav Giri <small>/ Free tools</small></span></a>
+    <a class="back-link" href="../#work">All tools <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<main>
+<section class="intro shell" aria-labelledby="page-title">
+  <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Free online calculator <span class="eyebrow-rule" aria-hidden="true"></span> No sign-up needed</div>
+  <h1 id="page-title">Age Calculator<span class="period">.</span></h1>
+  <p class="intro-copy">Find your exact age in <strong>years, months and days</strong> from your date of birth. Calculate your age today or on a specific date, see the days you've lived, and find out when your next birthday arrives.</p>
+</section>
+<section class="calc-section shell" id="calculator" aria-label="Age calculator">
+  <div class="calc-layout">
+    <form class="form-panel" id="age-form" novalidate>
+      <div class="panel-top"><span class="panel-kicker">01 / Enter your dates</span><span class="panel-side">Date of birth calculator</span></div>
+      <h2>Let's work it out.</h2>
+      <div class="form-field">
+        <label for="birth-date">Date of birth <span class="required">*</span></label>
+        <input id="birth-date" name="dob" type="date" required autocomplete="bday" aria-describedby="birth-help">
+        <p class="field-help" id="birth-help">Select the day, month and year you were born.</p>
+      </div>
+      <div class="form-field">
+        <div class="label-row"><label for="as-of-date">Calculate age on</label><button class="today-btn" type="button" id="today-btn">Use today</button></div>
+        <input id="as-of-date" name="asof" type="date" required aria-describedby="asof-help">
+        <p class="field-help" id="asof-help">For exam forms, applications or a past/future cut-off date.</p>
+      </div>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+      <div class="form-actions">
+        <button class="calculate-btn" type="submit">Calculate my age <span aria-hidden="true">↗</span></button>
+        <button class="reset-btn" type="reset">Reset</button>
+      </div>
+      <p class="privacy-note"><span aria-hidden="true">✳</span> Your date of birth stays in your browser. No account, uploads or tracking required.</p>
+    </form>
+    <div class="results-panel" id="results" aria-live="polite">
+      <div class="panel-top"><span class="panel-kicker">02 / Your result</span><span class="status" id="result-status">Ready</span></div>
+      <div id="result-empty" class="result-empty"><div class="empty-illustration" aria-hidden="true"><span>00</span><span>:</span><span>00</span></div><h2>Your numbers, precisely.</h2><p>Enter your birth date to see your exact age, days lived and upcoming birthday.</p></div>
+      <div id="result-details" hidden>
+        <p class="result-label">Your age on <span id="result-on"></span></p>
+        <div class="age-figure"><strong id="years">0</strong><span>years old</span></div>
+        <div class="age-parts"><div><strong id="months">0</strong><span>months</span></div><div><strong id="days">0</strong><span>days</span></div></div>
+        <div class="result-divider"></div>
+        <div class="metric-grid">
+          <div><span>Days lived</span><strong id="total-days">—</strong></div>
+          <div><span>Weeks lived</span><strong id="total-weeks">—</strong></div>
+          <div><span>Completed months</span><strong id="total-months">—</strong></div>
+          <div><span>Born on</span><strong id="birth-weekday">—</strong></div>
+        </div>
+        <div class="birthday-note"><span class="birthday-icon" aria-hidden="true">✳</span><div><span class="birthday-caption">Your next birthday</span><strong id="next-birthday">—</strong><p id="birthday-countdown">—</p></div></div>
+        <button type="button" id="copy-result" class="copy-result">Copy result <span aria-hidden="true">↗</span></button>
+        <p id="copy-status" class="copy-status" role="status"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="shell trust-strip" aria-label="Calculator features"><span>Calendar-accurate</span><span>Leap-year aware</span><span>Works offline after loading</span><span>Free & private</span></div>
+<section class="shell editorial" aria-labelledby="guide-title">
+  <div class="editorial-heading"><span class="section-index">The guide / 01</span><div><h2 id="guide-title">How to calculate your age from your date of birth</h2><p>An exact age is more than subtracting two years. Birthdays, different month lengths and leap years all matter.</p></div></div>
+  <div class="explain-grid">
+    <article><span class="step">01</span><h3>Enter your date of birth</h3><p>Select your birthday using the date picker. The tool accepts real calendar dates, including 29 February in leap years.</p></article>
+    <article><span class="step">02</span><h3>Choose an “as on” date</h3><p>Today's date is selected automatically. Change it to calculate your age on a school admission, exam or application cut-off date.</p></article>
+    <article><span class="step">03</span><h3>See your exact age</h3><p>Results show completed years, remaining months and days, total time lived, the weekday of birth and your next birthday.</p></article>
+  </div>
+</section>
+<section class="detail-section" aria-labelledby="method-title"><div class="shell detail-grid"><div><span class="section-index">The method / 02</span><h2 id="method-title">How the age calculator works</h2></div><div class="detail-content"><p>Age is counted using <strong>complete calendar years and months</strong>, followed by any remaining days. For example, someone born on <strong>15 June 2000</strong> is <strong>26 years, 2 months and 17 days old</strong> on <strong>1 September 2026</strong>.</p><p>The calculator advances by whole calendar months from the birth date. If the matching day doesn't exist in a shorter month, it uses that month's final day. It then counts the remaining calendar days, rather than assuming every month contains 30 days or every year contains 365 days.</p><div class="method-fact"><span>Important to know</span><p>For a person born on 29 February, this calculator treats 28 February as the birthday in non-leap years. Some official rules use 1 March instead; always follow the rule in the relevant application or jurisdiction.</p></div></div></div></section>
+<section class="shell use-cases" aria-labelledby="uses-title"><div class="editorial-heading"><span class="section-index">Everyday uses / 03</span><div><h2 id="uses-title">When is an age calculator useful?</h2><p>Use an age-as-on-date calculation whenever a form asks for your age on a specific day, not necessarily your age today.</p></div></div><div class="cases"><article><h3>Exam eligibility</h3><p>Check completed age on the date stated in a recruitment or examination notification. Use the exact cut-off given by the organization.</p></article><article><h3>School admissions</h3><p>Calculate a child's age on an admission eligibility date without approximating by birth year.</p></article><article><h3>Forms & applications</h3><p>Find completed years, months and days for applications, registration forms or other records that request age as on a given date.</p></article><article><h3>Birthday milestones</h3><p>See the date of your next birthday, the number of days remaining and how many calendar days you've lived.</p></article></div></section>
+<section class="faq-section shell" aria-labelledby="faq-title"><div class="editorial-heading"><span class="section-index">Questions / 04</span><div><h2 id="faq-title">Age calculator FAQs</h2><p>Clear answers to common questions about dates, birthdays and age calculations.</p></div></div><div class="faq-list">
+<details><summary>How do I calculate my exact age from my date of birth?</summary><p>Enter your date of birth and choose the date you want to calculate your age on. This calculator counts complete calendar years, then completed months, then remaining days. The result appears immediately.</p></details>
+<details><summary>Can I calculate my age as on a past or future date?</summary><p>Yes. Change the “Calculate age on” field to any valid date on or after your birthday. This is helpful for school admissions, exams and other eligibility cut-offs.</p></details>
+<details><summary>How many days old am I?</summary><p>The “Days lived” result counts the actual number of calendar days from your birthday to the selected date, including leap days. It does not approximate using 365 days per year.</p></details>
+<details><summary>What happens if I was born on 29 February?</summary><p>Leap-day birthdays are valid. For non-leap years, this calculator uses 28 February for anniversary and birthday calculations. Legal and organizational rules can vary, so confirm the applicable convention.</p></details>
+<details><summary>Can I use this for an exam age limit?</summary><p>You can use it to calculate completed age on an announced cut-off date. However, eligibility may include separate relaxation rules, birth-date windows and document requirements. Read the official notification before applying.</p></details>
+<details><summary>Does the calculator store my birthday?</summary><p>No. The calculation runs in your browser. Your input is not sent to a server or saved in local storage by this tool.</p></details>
+</div></section>
+</main>
+<footer class="site-footer"><div class="shell footer-inner"><span>Age Calculator · Free web tool</span><span>Developed by <a href="https://arnavgiri.github.io/" target="_blank" rel="noopener noreferrer">Arnav Giri</a></span></div></footer>
+</body></html>
