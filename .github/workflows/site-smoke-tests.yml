@@ -84,7 +84,7 @@ jobs:
               assert "https://biharkalyan.in" not in content, f"External brand link in {page}"
           home = parsers["index.html"]
           tool_links = [a for a in home.anchors if a.get("class") == "project"]
-          assert len(tool_links) == 3, "Expected three homepage tool links"
+          assert len(tool_links) == 4, "Expected four homepage project links"
           assert all(a.get("target") == "_blank" and "noopener" in a.get("rel", "") for a in tool_links)
           brand_links = [a for a in home.anchors if a.get("href", "").startswith("https://biharkalyan.in/")]
           assert len(brand_links) == 1, "Expected exactly one BiharKalyan link on homepage"
