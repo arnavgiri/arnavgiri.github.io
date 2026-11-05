@@ -102,7 +102,7 @@ function projectRow(item, index) {
 function updateFile(relative, content) {
   const target = path.join(ROOT, relative);
   if (fs.existsSync(target) && fs.readFileSync(target, "utf8") === content) return false;
-  fs.writeFileSync(target, content, "utf8");
+  if (!process.argv.includes("--check")) fs.writeFileSync(target, content, "utf8");
   return true;
 }
 

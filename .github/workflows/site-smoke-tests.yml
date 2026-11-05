@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check JavaScript syntax
         run: |
+          node --check index.js
           node --check app.js
           node --check study-ambient-sounds/app.js
           node --check typing-speed-test/app.js
@@ -63,9 +64,15 @@ jobs:
                       self.links.extend(item.strip().split()[0] for item in d["srcset"].split(","))
                   if "imagesrcset" in d:
                       self.links.extend(item.strip().split()[0] for item in d["imagesrcset"].split(","))
-          pages = [Path("index.html"), *(Path(p) / "index.html" for p in (
-              "study-focus-timer", "study-ambient-sounds", "typing-speed-test", "age-calculator"
-          ))]
+          import json
+          manifest = json.loads(Path("projects.json").read_text(encoding="utf-8"))
+          folders = sorted(
+              p for p in Path(".").iterdir()
+              if p.is_dir() and not p.name.startswith(".") and
+              p.name not in {"node_modules", "assets", "tests", "_site", "dist"} and
+              (p / "index.html").is_file()
+          )
+          pages = [Path("index.html"), *(p / "index.html" for p in folders)]
           parsers = {}
           for page in pages:
               p = LinkParser()
@@ -86,12 +93,23 @@ jobs:
               assert "https://biharkalyan.in" not in content, f"External brand link in {page}"
           home = parsers["index.html"]
           tool_links = [a for a in home.anchors if a.get("class") == "project"]
-          assert len(tool_links) == 5, "Expected five homepage project links"
+          assert len(tool_links) == len(manifest["projects"]) + len([
+              p for p in folders if p.name not in
+              {item.get("slug") for item in manifest["projects"]}
+          ]), "Homepage project count does not match manifest and discovered tools"
           assert all(a.get("target") == "_blank" and "noopener" in a.get("rel", "") for a in tool_links)
           brand_links = [a for a in home.anchors if a.get("href", "").startswith("https://biharkalyan.in/")]
           assert len(brand_links) == 1, "Expected exactly one BiharKalyan link on homepage"
-          ET.parse("feed.xml")
-          ET.parse("sitemap.xml")
+          rss = ET.parse("feed.xml")
+          sitemap = ET.parse("sitemap.xml")
+          expected_urls = {"https://arnavgiri.github.io/"} | {
+              "https://arnavgiri.github.io/" + folder.name + "/" for folder in folders
+          }
+          rss_urls = {item.findtext("link") for item in rss.findall(".//item")}
+          actual_sitemap = {node.text for node in sitemap.findall(
+              ".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
+          assert rss_urls == expected_urls, "RSS items do not match local pages"
+          assert actual_sitemap == expected_urls, "Sitemap URLs do not match local pages"
           for path in ["robots.txt", "favicon.svg", "study-ambient-sounds/thunder.ogg"]:
               assert Path(path).is_file(), f"Missing file: {path}"
           print("PASS XML, homepage links, required assets and tool branding")

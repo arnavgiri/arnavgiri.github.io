@@ -6,6 +6,6 @@
   "scripts": {
     "build": "node index.js",
     "check": "node index.js --check",
-    "test": "node --check index.js && node tests/age-calculator.test.js"
+    "test": "node --check index.js && node tests/age-calculator.test.js && node index.js --check"
   }
 }
