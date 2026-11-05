@@ -126,12 +126,12 @@ const newestFirst = (a, b) =>
   ensureDate(b.published, b.url).getTime() - ensureDate(a.published, a.url).getTime() ||
   a.url.localeCompare(b.url);
 const publishedPages = [
-  { url: config.site.url, published: config.site.published },
   ...local.map(item => ({
     url: new URL(item.slug + "/", baseURL).href,
     published: item.published
-  }))
-].sort(newestFirst);
+  })).sort(newestFirst),
+  { url: config.site.url, published: config.site.published }
+];
 const urls = publishedPages.map(item => item.url);
 const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
@@ -139,14 +139,14 @@ const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
   "\n</urlset>\n";
 
 const feedEntries = [
-  { url: config.site.url, title: config.site.feedTitle,
-    description: config.site.feedDescription, published: config.site.published },
   ...local.map(item => ({
     url: new URL(item.slug + "/", baseURL).href, title: item.feedTitle || item.title,
     description: item.feedDescription || item.summary, published: item.published,
     updated: item.updated || gitUpdated(item.slug)
-  }))
-].sort(newestFirst);
+  })).sort(newestFirst),
+  { url: config.site.url, title: config.site.feedTitle,
+    description: config.site.feedDescription, published: config.site.published }
+];
 const lastBuildDate = new Date(Math.max(
   ...feedEntries.map(item => ensureDate(item.updated || item.published, item.url).getTime())
 )).toUTCString();
