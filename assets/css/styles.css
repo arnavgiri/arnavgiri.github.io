@@ -97,8 +97,7 @@ button{font:inherit}
 .footer-credit{order:1;font-size:12px;line-height:1.6}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
-/* The hero and portrait are the only entrance animations.
-   The initial state is applied before the stylesheet paints, avoiding flashes. */
+/* Hero entrance and lightweight scroll reveals respect reduced-motion preferences. */
 @media (prefers-reduced-motion: no-preference) {
   html.motion-enabled :is(
     .hero-index, .hero h1 .line, .hero-lead, .hero-actions, .portrait-wrap
@@ -145,6 +144,18 @@ button{font:inherit}
       65% { opacity: 1; transform: translate3d(-2px, 0, 0) rotate(-.4deg) scale(1.003); }
       100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0) scale(1); }
     }
+  }
+
+
+  /* Reveal below-the-fold content only while IntersectionObserver is active. */
+  html.scroll-ready .scroll-reveal {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    transition: opacity .65s ease, transform .65s cubic-bezier(.22, 1, .36, 1);
+  }
+  html.scroll-ready .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 
   .project h3 { transition: transform .25s ease, color .25s ease; }
