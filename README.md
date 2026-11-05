@@ -4,10 +4,10 @@ Portfolio and independent web tools published at https://arnavgiri.github.io/
 
 ## Node.js site generator
 
-GitHub Pages is a static host: **`index.js` runs at build time, not on visitors' browsers**.
+GitHub Pages is a static host: **`build-site.js` runs at build time, not on visitors' browsers**.
 
 - `projects.json` is the source of truth for featured projects and RSS metadata.
-- `index.js` discovers additional folders containing an `index.html` file.
+- `build-site.js` discovers additional folders containing an `index.html` file.
 - `npm run build` regenerates homepage project rows, `feed.xml` and `sitemap.xml`.
 - `npm run check` verifies that generated files are up-to-date.
 - `npm test` checks generator syntax and the age calculator's date logic.

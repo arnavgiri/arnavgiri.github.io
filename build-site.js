@@ -3,7 +3,7 @@
 
 /**
  * Build the static portfolio, RSS feed and sitemap from projects.json.
- * Run "node index.js". GitHub Pages serves the output, not this Node script.
+ * Run "node build-site.js". GitHub Pages serves the output, not this Node script.
  * Unlisted directories containing index.html are discovered automatically.
  */
 const fs = require("node:fs");

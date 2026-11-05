@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check JavaScript syntax
         run: |
-          node --check index.js
+          node --check build-site.js
           node --check app.js
           node --check study-ambient-sounds/app.js
           node --check typing-speed-test/app.js
