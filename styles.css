@@ -88,84 +88,60 @@ nav .nav-contact:hover{color:var(--paper);background:var(--accent)}
 @media(max-width:630px){.shell{padding:0 20px}.topbar{height:68px}nav{gap:16px}nav a:not(.nav-contact){display:none}nav .nav-contact{padding:10px 13px}.hero{display:flex;flex-direction:column;align-items:stretch;padding-top:52px;padding-bottom:57px}.hero-index{margin-bottom:27px}.hero h1{font-size:clamp(62px,14vw,88px)}.hero-lead{margin-top:23px}.portrait-wrap{max-width:600px;margin:14px auto;width:100%}.portrait{aspect-ratio:4/5.1}.strip{align-items:start;flex-direction:column}.strip-items{gap:9px 17px}.strip-items span:not(:first-child):before{margin-right:13px}.section{padding-top:70px;padding-bottom:70px}.section-title{font-size:45px}.section-desc{font-size:16px}.section-top{margin-bottom:30px}.project{gap:12px;padding:23px 0;grid-template-columns:27px 1fr 34px}.project h3{font-size:25px}.project-arrow{width:34px;height:34px}.service-grid{grid-template-columns:1fr;gap:0}.service{padding:26px 0;border-bottom:1px solid rgba(255,255,255,.15)}.service h3{margin:15px 0 7px}.about-copy p{font-size:20px}.contact h2{font-size:clamp(54px,11vw,70px)}.contact-head{display:block}.contact-actions{align-items:stretch;flex-direction:column}.contact-actions .cta{justify-content:space-between}.footer{align-items:start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
-/* The motion-enabled class is set before CSS loads, preventing a first-paint flash.
-   Elements are hidden only when motion and IntersectionObserver are supported. */
+/* The hero and portrait are the only entrance animations.
+   The initial state is applied before the stylesheet paints, avoiding flashes. */
 @media (prefers-reduced-motion: no-preference) {
   html.motion-enabled :is(
-    .hero-index, .hero h1 .line, .hero-lead, .hero-actions,
-    .portrait-wrap, .strip, .section-top, .project, .service,
-    .about-copy, .contact-head, .contact h2, .contact-actions
+    .hero-index, .hero h1 .line, .hero-lead, .hero-actions, .portrait-wrap
   ):not(.is-visible) {
     opacity: 0;
-    transform: translate3d(0, 16px, 0);
+    transform: translate3d(0, 18px, 0);
   }
 
   html.motion-enabled .portrait-wrap:not(.is-visible) {
-    transform: translate3d(70px, 12px, 0) rotate(6deg) scale(.97);
+    transform: translate3d(85px, 16px, 0) rotate(8deg) scale(.95);
     transform-origin: 82% 78%;
   }
 
-  html.motion-enabled .reveal-on-scroll.is-visible {
-    animation: reveal-up .7s cubic-bezier(.22, 1, .36, 1) both;
+  html.motion-enabled .hero .is-visible:not(.portrait-wrap) {
+    animation: hero-rise .8s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
   }
 
-  @keyframes reveal-up {
-    from { opacity: 0; transform: translate3d(0, 16px, 0); }
-    to   { opacity: 1; transform: translate3d(0, 0, 0); }
-  }
+  html.motion-enabled .hero-index.is-visible { animation-delay: 0ms; }
+  html.motion-enabled .hero h1 .line:first-child.is-visible { animation-delay: 90ms; }
+  html.motion-enabled .hero h1 .line:last-child.is-visible { animation-delay: 165ms; }
+  html.motion-enabled .hero-lead.is-visible { animation-delay: 230ms; }
+  html.motion-enabled .hero-actions.is-visible { animation-delay: 295ms; }
 
-  html.motion-enabled .hero h1 .line:last-child { animation-delay: 90ms; }
-  html.motion-enabled .hero-lead { animation-delay: 130ms; }
-  html.motion-enabled .hero-actions { animation-delay: 170ms; }
-
-  html.motion-enabled .portrait-wrap.reveal-on-scroll.is-visible {
-    animation: portrait-swing-in 1.05s cubic-bezier(.22, 1, .36, 1) 90ms both;
+  html.motion-enabled .portrait-wrap.is-visible {
+    animation: portrait-swing-in 1.2s cubic-bezier(.16, 1, .3, 1) 140ms both;
     transform-origin: 82% 78%;
     backface-visibility: hidden;
   }
-
   @keyframes portrait-swing-in {
-    0% {
-      opacity: 0;
-      transform: translate3d(70px, 12px, 0) rotate(6deg) scale(.97);
-    }
-    100% {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-    }
+    0% { opacity: 0; transform: translate3d(85px, 16px, 0) rotate(8deg) scale(.95); }
+    65% { opacity: 1; transform: translate3d(-4px, 0, 0) rotate(-.7deg) scale(1.005); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0) scale(1); }
   }
-
-  @media (max-width: 630px) {
+  @media(max-width:630px) {
     html.motion-enabled .portrait-wrap:not(.is-visible) {
-      transform: translate3d(28px, 8px, 0) rotate(3deg) scale(.98);
+      transform: translate3d(32px, 10px, 0) rotate(4deg) scale(.97);
     }
     @keyframes portrait-swing-in {
-      0% {
-        opacity: 0;
-        transform: translate3d(28px, 8px, 0) rotate(3deg) scale(.98);
-      }
-      100% {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-      }
+      0% { opacity: 0; transform: translate3d(32px, 10px, 0) rotate(4deg) scale(.97); }
+      65% { opacity: 1; transform: translate3d(-2px, 0, 0) rotate(-.4deg) scale(1.003); }
+      100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0) scale(1); }
     }
   }
 
-  html.motion-enabled .project:nth-child(2) { animation-delay: 35ms; }
-  html.motion-enabled .project:nth-child(3) { animation-delay: 70ms; }
-  html.motion-enabled .project:nth-child(4) { animation-delay: 105ms; }
-  html.motion-enabled .service:nth-child(2) { animation-delay: 60ms; }
-  html.motion-enabled .service:nth-child(3) { animation-delay: 120ms; }
-
   .project h3 { transition: transform .25s ease, color .25s ease; }
-  .project:hover h3, .project:focus-visible h3 {
-    transform: translateX(5px);
-    color: var(--accent);
-  }
+  .project:hover h3, .project:focus-visible h3 { transform: translateX(5px); color: var(--accent); }
   .project-arrow svg { transition: transform .25s ease; }
-  .project:hover .project-arrow svg, .project:focus-visible .project-arrow svg {
-    transform: translate(2px, -2px);
-  }
+  .project:hover .project-arrow svg, .project:focus-visible .project-arrow svg { transform: translate(2px, -2px); }
   .cta { transition: background .2s ease, transform .2s ease; }
   .cta:hover { transform: translateY(-2px); }
   .cta:active { transform: translateY(0); }
