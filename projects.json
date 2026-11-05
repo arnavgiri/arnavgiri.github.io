@@ -1,0 +1,55 @@
+{
+  "site": {
+    "url": "https://arnavgiri.github.io/",
+    "title": "Arnav Giri | Projects & Tools",
+    "description": "Portfolio updates and useful web tools built by Arnav Giri.",
+    "published": "2026-11-04T11:33:42Z",
+    "feedTitle": "Arnav Giri — Portfolio",
+    "feedDescription": "Explore Arnav Giri's web development portfolio, selected work, services, and contact information."
+  },
+  "projects": [
+    {
+      "slug": "study-focus-timer",
+      "title": "Study Focus Timer",
+      "summary": "A considered workspace for uninterrupted focus.",
+      "category": "Timer / Themes / Fullscreen",
+      "feedTitle": "Study Focus Timer — Free Study Tool",
+      "feedDescription": "Stay focused with a distraction-free study timer, custom durations, fullscreen mode, and calming themes.",
+      "published": "2026-11-04T04:57:22Z"
+    },
+    {
+      "slug": "study-ambient-sounds",
+      "title": "Study Ambient Sounds",
+      "summary": "Customizable soundscapes for quieter, more focused days.",
+      "category": "Web Audio / Sound Mixer",
+      "feedTitle": "Study Ambient Sounds — Free Sound Mixer",
+      "feedDescription": "Mix rain, forest, fan, wind, white noise, and thunder with adjustable volume controls and a sleep timer.",
+      "published": "2026-11-04T06:16:56Z"
+    },
+    {
+      "slug": "typing-speed-test",
+      "title": "Typing Speed Test",
+      "summary": "Practice typing with immediate, meaningful feedback.",
+      "category": "JavaScript / Progress Tracking",
+      "feedTitle": "Typing Speed Test — Free Typing Practice",
+      "feedDescription": "Measure words per minute, accuracy, and mistakes with 30-, 60-, and 120-second typing tests.",
+      "published": "2026-11-04T07:13:08Z"
+    },
+    {
+      "title": "BiharKalyan.in",
+      "url": "https://biharkalyan.in/arnav-giri/",
+      "summary": "My profile and work beyond this portfolio.",
+      "category": "Profile / External Site",
+      "external": true
+    },
+    {
+      "slug": "age-calculator",
+      "title": "Age Calculator",
+      "summary": "Calculate your exact age by date of birth, down to the day.",
+      "category": "Date / Birthday / Calculator",
+      "feedTitle": "Age Calculator — Exact Age in Years, Months and Days",
+      "feedDescription": "Calculate your age by date of birth today or on any cut-off date, see total days lived and next birthday countdown.",
+      "published": "2026-11-05T05:01:50Z"
+    }
+  ]
+}

@@ -1,42 +1,42 @@
 # Arnav Giri — Portfolio
 
-Personal portfolio and project showcase for **Arnav Giri**.
+Portfolio and independent web tools published at https://arnavgiri.github.io/
 
-**Live website:** https://arnavgiri.github.io/
+## Node.js site generator
 
-## Featured projects
+GitHub Pages is a static host: **`index.js` runs at build time, not on visitors' browsers**.
 
-- [Study Focus Timer](https://arnavgiri.github.io/study-focus-timer/) — distraction-free study timer with focus presets and custom themes.
-- [Study Ambient Sounds](https://arnavgiri.github.io/study-ambient-sounds/) — ambient audio mixer with independent volume controls and a sleep timer.
-- [Typing Speed Test](https://arnavgiri.github.io/typing-speed-test/) — live WPM and accuracy measurements with locally saved progress.
+- `projects.json` is the source of truth for featured projects and RSS metadata.
+- `index.js` discovers additional folders containing an `index.html` file.
+- `npm run build` regenerates homepage project rows, `feed.xml` and `sitemap.xml`.
+- `npm run check` verifies that generated files are up-to-date.
+- `npm test` checks generator syntax and the age calculator's date logic.
+- `.github/workflows/build-and-deploy.yml` builds and publishes the static site via GitHub Actions.
+
+### Add a new tool
+
+1. Create a folder such as `new-tool/index.html` with its own CSS and JS.
+2. Add an entry to `projects.json` with `slug`, `title`, `summary`, `category`, `published`, and optional `feedTitle`/`feedDescription`. This controls ordering and dates. Or let the build discover the folder automatically from its HTML title and description.
+3. Run `npm run build`; homepage listing, RSS and sitemap update together.
+4. Commit and push. The Pages workflow rebuilds the site.
+
+Do not put BiharKalyan.in links inside tool pages. The external profile entry remains homepage-only, and all homepage projects open in a new tab.
+
+### Deployment
+
+Go to **Repository Settings → Pages → Build and deployment → Source: GitHub Actions**.
+The workflow builds and uploads the generated static site. Keep the existing static pages in the repository as a fallback until GitHub Pages is switched over.
+
+## URLs
+
+- [Homepage](https://arnavgiri.github.io/)
+- [Study Focus Timer](https://arnavgiri.github.io/study-focus-timer/)
+- [Study Ambient Sounds](https://arnavgiri.github.io/study-ambient-sounds/)
+- [Typing Speed Test](https://arnavgiri.github.io/typing-speed-test/)
+- [Age Calculator](https://arnavgiri.github.io/age-calculator/)
+- [RSS](https://arnavgiri.github.io/feed.xml)
+- [Sitemap](https://arnavgiri.github.io/sitemap.xml)
 
 ## Contact
 
-- **Email:** arnavgiri@biharkalyan.in
-- **GitHub:** https://github.com/arnavgiri
-
-## Structure
-
-- `index.html`: Main portfolio page.
-- `styles.css`: Responsive styles and design tokens.
-- `app.js`: Small progressive enhancement.
-- `assets/arnav-giri.webp`: Optimized photo provided for this project.
-- `favicon.svg`: Custom favicon.
-- `robots.txt`: Domain-level crawler instructions.
-
-Static website; no build process or dependencies.
-
-## Discovery
-
-- [RSS feed](https://arnavgiri.github.io/feed.xml) — portfolio and three published tools.
-- [Sitemap](https://arnavgiri.github.io/sitemap.xml) — canonical public pages.
-
-## Project folders
-
-All three web tools are now maintained in this portfolio repository:
-
-- `study-focus-timer/`: timer HTML, CSS, and favicon.
-- `study-ambient-sounds/`: ambient mixer HTML, CSS, JavaScript, favicon, and bundled thunder audio.
-- `typing-speed-test/`: typing test HTML, CSS, JavaScript, and favicon.
-
-Each tool is independently accessible through its matching path on `https://arnavgiri.github.io/`.
+Email: arnavgiri@biharkalyan.in · [GitHub](https://github.com/arnavgiri)

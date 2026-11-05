@@ -1,0 +1,11 @@
+{
+  "name": "arnav-giri-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site generator for portfolio projects, RSS feed, and sitemap",
+  "scripts": {
+    "build": "node index.js",
+    "check": "node index.js --check",
+    "test": "node --check index.js && node tests/age-calculator.test.js"
+  }
+}
