@@ -88,38 +88,32 @@ nav .nav-contact:hover{color:var(--paper);background:var(--accent)}
 @media(max-width:630px){.shell{padding:0 20px}.topbar{height:68px}nav{gap:16px}nav a:not(.nav-contact){display:none}nav .nav-contact{padding:10px 13px}.hero{display:flex;flex-direction:column;align-items:stretch;padding-top:52px;padding-bottom:57px}.hero-index{margin-bottom:27px}.hero h1{font-size:clamp(62px,14vw,88px)}.hero-lead{margin-top:23px}.portrait-wrap{max-width:600px;margin:14px auto;width:100%}.portrait{aspect-ratio:4/5.1}.strip{align-items:start;flex-direction:column}.strip-items{gap:9px 17px}.strip-items span:not(:first-child):before{margin-right:13px}.section{padding-top:70px;padding-bottom:70px}.section-title{font-size:45px}.section-desc{font-size:16px}.section-top{margin-bottom:30px}.project{gap:12px;padding:23px 0;grid-template-columns:27px 1fr 34px}.project h3{font-size:25px}.project-arrow{width:34px;height:34px}.service-grid{grid-template-columns:1fr;gap:0}.service{padding:26px 0;border-bottom:1px solid rgba(255,255,255,.15)}.service h3{margin:15px 0 7px}.about-copy p{font-size:20px}.contact h2{font-size:clamp(54px,11vw,70px)}.contact-head{display:block}.contact-actions{align-items:stretch;flex-direction:column}.contact-actions .cta{justify-content:space-between}.footer{align-items:start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
-/* Restrained motion: staged hero entrance, scroll reveals, and tactile links. */
+/* IntersectionObserver triggers a gentle 16px upward entrance.
+   Keyframe animation works even when the observer fires on the first frame. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-index, .hero h1 .line, .hero-lead, .hero-actions, .portrait-wrap {
-    animation: hero-enter .7s cubic-bezier(.2,.72,.2,1) both;
+  .reveal-on-scroll.is-visible {
+    animation: reveal-up .74s cubic-bezier(.22,1,.36,1) both;
   }
-  .hero-index { animation-delay: .06s; }
-  .hero h1 .line:first-child { animation-delay: .13s; }
-  .hero h1 .line:last-child { animation-delay: .23s; }
-  .hero-lead { animation-delay: .34s; }
-  .hero-actions { animation-delay: .43s; }
-  .portrait-wrap { animation-delay: .2s; animation-duration: .9s; }
-  @keyframes hero-enter {
-    from { opacity: 0; transform: translate3d(0,18px,0); }
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translate3d(0,16px,0); }
     to { opacity: 1; transform: translate3d(0,0,0); }
   }
+  .hero h1 .line:last-child { animation-delay: 90ms; }
+  .hero-lead { animation-delay: 130ms; }
+  .hero-actions { animation-delay: 170ms; }
+  .portrait-wrap { animation-delay: 110ms; }
+  .project:nth-child(2) { animation-delay: 40ms; }
+  .project:nth-child(3) { animation-delay: 75ms; }
+  .project:nth-child(4) { animation-delay: 110ms; }
+  .service:nth-child(2) { animation-delay: 65ms; }
+  .service:nth-child(3) { animation-delay: 130ms; }
 
-  .motion-ready .reveal-on-scroll {
-    opacity: 0;
-    transform: translate3d(0,22px,0);
-    transition: opacity .72s ease, transform .72s cubic-bezier(.2,.7,.2,1);
+  .project:hover, .project:focus-visible {
+    background: rgba(27,110,103,.045);
   }
-  .motion-ready .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  .motion-ready .project.reveal-on-scroll {
-    transition: opacity .62s ease, transform .62s cubic-bezier(.2,.7,.2,1), background .2s ease;
-  }
-  .project:hover, .project:focus-visible { background: rgba(27,110,103,.045); }
   .project h3 { transition: transform .25s ease, color .25s ease; }
   .project:hover h3, .project:focus-visible h3 {
-    transform: translateX(6px);
+    transform: translateX(5px);
     color: var(--accent);
   }
   .project-arrow svg { transition: transform .25s ease; }
