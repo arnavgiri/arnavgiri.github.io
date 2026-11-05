@@ -1,0 +1,96 @@
+name: Site smoke tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check study-ambient-sounds/app.js
+          node --check typing-speed-test/app.js
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          class InlineScript(HTMLParser):
+              in_script = False
+              collected = []
+              def handle_starttag(self, tag, attrs):
+                  if tag == "script" and not dict(attrs).get("src"):
+                      self.in_script = True
+              def handle_endtag(self, tag):
+                  if tag == "script": self.in_script = False
+              def handle_data(self, data):
+                  if self.in_script: self.collected.append(data)
+          html = Path("study-focus-timer/index.html").read_text()
+          parser = InlineScript()
+          parser.feed(html)
+          Path("/tmp/focus-inline.js").write_text("\n".join(parser.collected))
+          PY
+          node --check /tmp/focus-inline.js
+      - name: Check local assets, links, and XML
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlsplit, unquote
+          import xml.etree.ElementTree as ET
+
+          class LinkParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+                  self.anchors = []
+              def handle_starttag(self, tag, attrs):
+                  d = dict(attrs)
+                  if "href" in d:
+                      self.links.append(d["href"])
+                      if tag == "a": self.anchors.append(d)
+                  if "src" in d: self.links.append(d["src"])
+                  if "srcset" in d:
+                      self.links.extend(item.strip().split()[0] for item in d["srcset"].split(","))
+                  if "imagesrcset" in d:
+                      self.links.extend(item.strip().split()[0] for item in d["imagesrcset"].split(","))
+          pages = [Path("index.html"), *(Path(p) / "index.html" for p in (
+              "study-focus-timer", "study-ambient-sounds", "typing-speed-test"
+          ))]
+          parsers = {}
+          for page in pages:
+              p = LinkParser()
+              p.feed(page.read_text(encoding="utf-8"))
+              parsers[str(page)] = p
+              for link in p.links:
+                  parsed = urlsplit(link)
+                  if parsed.scheme or parsed.netloc or link.startswith(("mailto:", "#", "tel:", "data:")):
+                      continue
+                  relative = unquote(parsed.path)
+                  if not relative: continue
+                  path = (Path(".") / relative.lstrip("/")) if relative.startswith("/") else page.parent / relative
+                  if path.is_dir(): path /= "index.html"
+                  assert path.is_file(), f"Missing asset: {page} -> {link}"
+              print(f"PASS {page} ({len(p.links)} references)")
+          for page in pages[1:]:
+              content = page.read_text(encoding="utf-8").lower()
+              assert "https://biharkalyan.in" not in content, f"External brand link in {page}"
+          home = parsers["index.html"]
+          tool_links = [a for a in home.anchors if a.get("class") == "project"]
+          assert len(tool_links) == 3, "Expected three homepage tool links"
+          assert all(a.get("target") == "_blank" and "noopener" in a.get("rel", "") for a in tool_links)
+          brand_links = [a for a in home.anchors if a.get("href", "").startswith("https://biharkalyan.in/")]
+          assert len(brand_links) == 1, "Expected exactly one BiharKalyan link on homepage"
+          ET.parse("feed.xml")
+          ET.parse("sitemap.xml")
+          for path in ["robots.txt", "favicon.svg", "study-ambient-sounds/thunder.ogg"]:
+              assert Path(path).is_file(), f"Missing file: {path}"
+          print("PASS XML, homepage links, required assets and tool branding")
+          PY
