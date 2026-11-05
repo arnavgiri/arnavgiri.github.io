@@ -34,7 +34,7 @@ jobs:
           def save_image(width, target):
               frame = original.copy()
               frame.thumbnail((width, 1600), Image.Resampling.LANCZOS)
-              frame.save(target, "WEBP", quality=83, method=6)
+              frame.save(target, "WEBP", quality=95, method=6, exact=True)
               print(f"{target}: {frame.size}, {Path(target).stat().st_size:,} bytes")
 
           save_image(720, "assets/portrait-720.webp")
