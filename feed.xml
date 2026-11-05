@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arnav Giri | Projects &amp; Tools</title>
+    <link>https://arnavgiri.github.io/</link>
+    <description>Portfolio updates and useful web tools built by Arnav Giri.</description>
+    <language>en</language>
+    <atom:link href="https://arnavgiri.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Nov 2026 04:02:29 GMT</lastBuildDate>
+    <item>
+      <title>Arnav Giri — Portfolio</title>
+      <link>https://arnavgiri.github.io/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/</guid>
+      <description>Explore Arnav Giri's web development portfolio, selected work, services, and contact information.</description>
+    </item>
+    <item>
+      <title>Study Focus Timer — Free Study Tool</title>
+      <link>https://arnavgiri.github.io/study-focus-timer/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/study-focus-timer/</guid>
+      <description>Stay focused with a distraction-free study timer, custom durations, fullscreen mode, and calming themes.</description>
+    </item>
+    <item>
+      <title>Study Ambient Sounds — Free Sound Mixer</title>
+      <link>https://arnavgiri.github.io/study-ambient-sounds/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/study-ambient-sounds/</guid>
+      <description>Mix rain, forest, fan, wind, white noise, and thunder with adjustable volume controls and a sleep timer.</description>
+    </item>
+    <item>
+      <title>Typing Speed Test — Free Typing Practice</title>
+      <link>https://arnavgiri.github.io/typing-speed-test/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/typing-speed-test/</guid>
+      <description>Measure words per minute, accuracy, and mistakes with 30-, 60-, and 120-second typing tests.</description>
+    </item>
+  </channel>
+</rss>
