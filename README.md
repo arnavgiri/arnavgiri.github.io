@@ -10,8 +10,8 @@ GitHub Pages is a static host: **`build-site.js` runs at build time, not on visi
 - `build-site.js` discovers additional folders containing an `index.html` file.
 - `npm run build` regenerates homepage project rows, `feed.xml` and `sitemap.xml`.
 - `npm run check` verifies that generated files are up-to-date.
-- `npm test` checks generator syntax and the age calculator's date logic.
-- `.github/workflows/build-and-deploy.yml` builds and publishes the static site via GitHub Actions.
+- `npm test` verifies generator syntax and that generated files are up-to-date. Full regression tests now run in the private `portfolio-build` repository.
+- `.github/workflows/build-and-deploy.yml` still builds and publishes the static site until the private publishing cutover is complete. Full CI checks run privately in `arnavgiri/portfolio-build`.
 
 ### Add a new tool
 
@@ -40,3 +40,7 @@ The workflow builds and uploads the generated static site. Keep the existing sta
 ## Contact
 
 Email: arnavgiri@biharkalyan.in · [GitHub](https://github.com/arnavgiri)
+
+## CI migration status
+
+The public smoke-test workflow and duplicate test scripts were moved to the private build repository. This public repository retains its Node.js build scripts and deployment workflow until private publishing is configured and verified. Published HTML, assets, RSS and sitemap remain public.
