@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f1f4ef">
+<title>Free QR Code Generator — Download PNG & SVG | Arnav Giri</title>
+<meta name="description" content="Create a free QR code for any URL or text. Customize colors, size and error correction, then download a crisp PNG or SVG. Private, no sign-up and entirely browser-based.">
+<link rel="canonical" href="https://arnavgiri.github.io/qr-code-generator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free QR Code Generator — PNG & SVG">
+<meta property="og:description" content="Create and customize downloadable QR codes locally in your browser. No account or uploads.">
+<meta property="og:url" content="https://arnavgiri.github.io/qr-code-generator/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles.css">
+<script src="./qr-engine.js" defer></script>
+<script src="./app.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator","url":"https://arnavgiri.github.io/qr-code-generator/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Generate downloadable PNG or SVG QR codes for URLs and text directly in your browser."}</script>
+</head>
+<body>
+<a class="skip-link" href="#generator">Skip to QR generator</a>
+<header class="topbar"><div class="shell topbar-inner"><a href="../" class="brand"><span class="brand-icon">AG</span><span>Arnav Giri <small>/ Free web tools</small></span></a><a class="back-link" href="../#work">Explore tools <span aria-hidden="true">↗</span></a></div></header>
+<main>
+<section class="shell hero" aria-labelledby="page-title">
+  <div class="kicker"><span class="status-dot"></span> FREE UTILITY <span class="kicker-line"></span> NO SIGN-UP REQUIRED</div>
+  <div class="hero-heading"><div><h1 id="page-title">QR Code<br><em>Generator.</em></h1><p>Turn any link or message into a clean, scannable code. Make it yours, then download it in seconds. <strong>Created entirely on your device.</strong></p></div><div class="hero-aside" aria-hidden="true"><span>MAKE IT</span><span>SCAN IT</span><span>SHARE IT ↗</span></div></div>
+</section>
+<section class="shell tool-section" id="generator" aria-label="QR code generator">
+  <div class="workspace">
+    <form id="qr-form" class="controls" novalidate>
+      <div class="section-head"><span>01 / CONFIGURE</span><span class="head-label">YOUR QR CODE</span></div>
+      <div class="fields">
+        <div class="input-head"><label for="qr-content">Destination or message</label><span id="char-count">0 / 1200</span></div>
+        <textarea id="qr-content" rows="5" maxlength="1200" placeholder="https://example.com" spellcheck="false" required>https://arnavgiri.github.io/</textarea>
+        <p class="hint">Paste a website URL or type any text. Your content never leaves this browser.</p>
+        <div class="settings-heading">APPEARANCE <span></span></div>
+        <div class="color-grid">
+          <div><label for="foreground">Foreground</label><div class="color-control"><input type="color" id="foreground" value="#163e32" aria-label="Foreground color"><output id="foreground-code" for="foreground">#163E32</output></div></div>
+          <div><label for="background">Background</label><div class="color-control"><input type="color" id="background" value="#ffffff" aria-label="Background color"><output id="background-code" for="background">#FFFFFF</output></div></div>
+        </div>
+        <div class="select-grid">
+          <div><label for="qr-size">Download size</label><select id="qr-size"><option value="512">512 × 512 px</option><option value="1024" selected>1024 × 1024 px</option><option value="2048">2048 × 2048 px</option></select></div>
+          <div><label for="error-level">Error correction</label><select id="error-level"><option value="L">Low · 7%</option><option value="M" selected>Medium · 15%</option><option value="Q">Quartile · 25%</option><option value="H">High · 30%</option></select></div>
+        </div>
+        <label class="check-row" for="quiet-zone"><input type="checkbox" id="quiet-zone" checked><span><strong>Include quiet zone</strong><small>Recommended white space for reliable scanning</small></span></label>
+        <p id="form-error" class="error" role="alert" hidden></p>
+        <div class="form-actions"><button type="submit" class="primary-button" id="generate-button">Generate QR code <span aria-hidden="true">↗</span></button><button type="button" class="reset-button" id="reset-button">Reset</button></div>
+      </div>
+    </form>
+    <section class="preview" aria-labelledby="preview-heading">
+      <div class="section-head preview-head"><span>02 / PREVIEW</span><span class="head-label">READY TO SHARE</span></div>
+      <div class="preview-inner">
+        <div class="preview-status"><span class="status-dot"></span><span id="preview-status">Code is ready</span></div>
+        <div class="preview-board"><div id="qr-preview" role="img" aria-label="Generated QR code for your content"></div></div>
+        <div class="preview-meta"><span id="modules-info">—</span><span id="download-size">1024 × 1024 PNG</span></div>
+        <div class="download-actions"><button type="button" id="download-png" class="download-button">Download PNG <span aria-hidden="true">↓</span></button><button type="button" id="download-svg" class="secondary-button">Download SVG <span aria-hidden="true">↓</span></button></div>
+        <button type="button" id="copy-image" class="copy-button">Copy image to clipboard <span aria-hidden="true">↗</span></button>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+        <p class="preview-note">Check the code with a camera before printing. Higher contrast and a quiet zone improve scanning.</p>
+      </div>
+    </section>
+  </div>
+  <div class="trust-strip"><span>✳ NO ACCOUNT</span><span>✳ NO TRACKING OR UPLOADS</span><span>✳ PNG + SVG EXPORT</span></div>
+</section>
+<section class="shell info-section" aria-labelledby="about-title"><div class="info-heading"><span class="small-label">THE DETAILS / 03</span><h2 id="about-title">Simple to make.<br><em>Easy to scan.</em></h2></div><div class="info-content"><p>QR codes store a link or short message in a matrix of dark and light squares. Your phone's camera can read that information and open the link or show the text.</p><p>For reliable results, use dark foreground colors, a light background and leave the quiet zone enabled. SVG is best for scalable print layouts; PNG works well for web and presentations.</p></div></section>
+<section class="shell faq" aria-labelledby="faq-title"><div><span class="small-label">GOOD TO KNOW / 04</span><h2 id="faq-title">Frequently asked<br><em>questions.</em></h2></div><div class="faq-items">
+<details><summary>Is this QR code generator free?<span>+</span></summary><p>Yes. Generate and download as many QR codes as you need, without an account or subscription.</p></details>
+<details><summary>Is my text or URL uploaded?<span>+</span></summary><p>No. QR code generation and file creation happen in your browser. This tool does not send the entered content to a server.</p></details>
+<details><summary>Does the QR code expire?<span>+</span></summary><p>No. The code stores the content you entered. If it links to a webpage, that destination must remain online for the link to work.</p></details>
+<details><summary>Which file format should I choose?<span>+</span></summary><p>Choose SVG for crisp print graphics at any size, or PNG for a ready-to-use image. Keep sufficient white space around the code.</p></details>
+</div></section>
+</main>
+<footer class="footer"><div class="shell footer-inner"><span>Built by <a href="../">Arnav Giri</a> · A free browser-based tool.</span><a href="https://github.com/arnavgiri/arnavgiri.github.io/tree/main/qr-code-generator" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a></div></footer>
+</body>
+</html>
