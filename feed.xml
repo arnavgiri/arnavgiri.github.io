@@ -7,7 +7,7 @@
     <language>en</language>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
     <atom:link href="https://arnavgiri.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 05 Nov 2026 04:08:41 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 05:01:50 GMT</lastBuildDate>
     <item>
       <title>Arnav Giri — Portfolio</title>
       <link>https://arnavgiri.github.io/</link>
@@ -35,6 +35,13 @@
       <guid isPermaLink="true">https://arnavgiri.github.io/typing-speed-test/</guid>
       <pubDate>Wed, 04 Nov 2026 07:13:08 GMT</pubDate>
       <description>Measure words per minute, accuracy, and mistakes with 30-, 60-, and 120-second typing tests.</description>
+    </item>
+    <item>
+      <title>Age Calculator — Exact Age in Years, Months and Days</title>
+      <link>https://arnavgiri.github.io/age-calculator/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/age-calculator/</guid>
+      <pubDate>Thu, 05 Nov 2026 05:01:50 GMT</pubDate>
+      <description>Calculate your age by date of birth today or on any cut-off date, see total days lived and next birthday countdown.</description>
     </item>
   </channel>
 </rss>
