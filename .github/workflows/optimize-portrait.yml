@@ -1,0 +1,75 @@
+name: Optimize hero portrait
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - assets/potrait.png
+      - .github/workflows/optimize-portrait.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install image optimizer
+        run: python3 -m pip install --quiet Pillow
+      - name: Produce responsive WebP
+        run: |
+          python3 - <<'PY'
+          from PIL import Image, ImageOps
+          from pathlib import Path
+
+          source = Path("assets/potrait.png")
+          original = Image.open(source)
+          original = ImageOps.exif_transpose(original).convert("RGB")
+          source_width, source_height = original.size
+
+          def save_image(width, target):
+              frame = original.copy()
+              frame.thumbnail((width, 1600), Image.Resampling.LANCZOS)
+              frame.save(target, "WEBP", quality=83, method=6)
+              print(f"{target}: {frame.size}, {Path(target).stat().st_size:,} bytes")
+
+          save_image(720, "assets/portrait-720.webp")
+          save_image(1080, "assets/portrait-1080.webp")
+          print(f"Source: {source_width}x{source_height}, {source.stat().st_size:,} bytes")
+          PY
+      - name: Update HTML image URLs and intrinsic dimensions
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          from PIL import Image
+
+          path = Path("index.html")
+          html = path.read_text(encoding="utf-8")
+          img_url = "https://arnavgiri.github.io/assets/portrait-1080.webp"
+          html = html.replace("https://arnavgiri.github.io/assets/potrait.png", img_url)
+          html = html.replace('href="./assets/potrait.png"', 'href="./assets/portrait-1080.webp"')
+          html = html.replace(
+              '<img src="./assets/potrait.png" width="394" height="700"',
+              '<img src="./assets/portrait-720.webp" srcset="./assets/portrait-720.webp 720w, ./assets/portrait-1080.webp 1080w" sizes="(max-width: 630px) 85vw, (max-width: 850px) 38vw, 40vw" width="720" height="1280" decoding="async" loading="eager"'
+          )
+          html = re.sub(
+              r'(<link rel="preload" as="image" href="\./assets/portrait-1080\.webp")[^>]*>',
+              r'\1 imagesrcset="./assets/portrait-720.webp 720w, ./assets/portrait-1080.webp 1080w" imagesizes="(max-width: 630px) 85vw, (max-width: 850px) 38vw, 40vw" fetchpriority="high">',
+              html
+          )
+          path.write_text(html, encoding="utf-8")
+          PY
+      - name: Commit optimized images and new HTML
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/portrait-720.webp assets/portrait-1080.webp
+          if ! git diff --cached --quiet; then
+            git commit -m "Serve optimized responsive WebP portrait"
+            git push
+          fi
