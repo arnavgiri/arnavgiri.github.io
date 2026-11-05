@@ -143,9 +143,6 @@ nav .nav-contact:hover{color:var(--paper);background:var(--accent)}
   .service:nth-child(2) { animation-delay: 65ms; }
   .service:nth-child(3) { animation-delay: 130ms; }
 
-  .project:hover, .project:focus-visible {
-    background: rgba(27,110,103,.045);
-  }
   .project h3 { transition: transform .25s ease, color .25s ease; }
   .project:hover h3, .project:focus-visible h3 {
     transform: translateX(5px);
@@ -160,8 +157,3 @@ nav .nav-contact:hover{color:var(--paper);background:var(--accent)}
   .cta:active { transform: translateY(0); }
 }
 
-/* Keep the external BiharKalyan project row transparent on hover and focus. */
-.project[href^="https://biharkalyan.in/"]:hover,
-.project[href^="https://biharkalyan.in/"]:focus-visible {
-  background: transparent;
-}
