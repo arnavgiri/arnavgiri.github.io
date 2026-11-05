@@ -121,7 +121,18 @@ if (homepage.includes(PROJECT_START) && homepage.includes(PROJECT_END)) {
     open + "\n" + PROJECT_START + "\n" + newRows + "\n" + PROJECT_END + "\n" + rest);
 }
 
-const urls = [config.site.url, ...local.map(item => new URL(item.slug + "/", baseURL).href)];
+// Keep the RSS feed and sitemap newest-first using publication dates.
+const newestFirst = (a, b) =>
+  ensureDate(b.published, b.url).getTime() - ensureDate(a.published, a.url).getTime() ||
+  a.url.localeCompare(b.url);
+const publishedPages = [
+  { url: config.site.url, published: config.site.published },
+  ...local.map(item => ({
+    url: new URL(item.slug + "/", baseURL).href,
+    published: item.published
+  }))
+].sort(newestFirst);
+const urls = publishedPages.map(item => item.url);
 const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   urls.map(url => "  <url><loc>" + escapeXML(url) + "</loc></url>").join("\n") +
@@ -135,7 +146,7 @@ const feedEntries = [
     description: item.feedDescription || item.summary, published: item.published,
     updated: item.updated || gitUpdated(item.slug)
   }))
-];
+].sort(newestFirst);
 const lastBuildDate = new Date(Math.max(
   ...feedEntries.map(item => ensureDate(item.updated || item.published, item.url).getTime())
 )).toUTCString();

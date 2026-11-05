@@ -110,6 +110,26 @@ jobs:
           rss_urls = {item.findtext("link") for item in rss.findall(".//item")}
           actual_sitemap = {node.text for node in sitemap.findall(
               ".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
+          from datetime import datetime
+          feed_dates = [
+              datetime.strptime(item.findtext("pubDate"), "%a, %d %b %Y %H:%M:%S GMT")
+              for item in rss.findall(".//item")
+          ]
+          assert feed_dates == sorted(feed_dates, reverse=True), "RSS items must be newest first"
+          manifest_dates = {
+              "https://arnavgiri.github.io/": manifest["site"]["published"],
+              **{
+                  "https://arnavgiri.github.io/" + item["slug"] + "/": item["published"]
+                  for item in manifest["projects"] if not item.get("external")
+              }
+          }
+          sitemap_dates = [
+              manifest_dates[url] for url in [
+                  node.text for node in sitemap.findall(
+                      ".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+              ] if url in manifest_dates
+          ]
+          assert sitemap_dates == sorted(sitemap_dates, reverse=True), "Sitemap pages must be newest first"
           assert rss_urls == expected_urls, "RSS items do not match local pages"
           assert actual_sitemap == expected_urls, "Sitemap URLs do not match local pages"
           for path in ["robots.txt", "favicon.svg", "study-ambient-sounds/thunder.ogg"]:
