@@ -21,6 +21,8 @@ jobs:
           node --check study-ambient-sounds/app.js
           node --check typing-speed-test/app.js
           node --check age-calculator/app.js
+          node --check password-generator/app.js
+          node tests/password-generator.test.js
           node tests/age-calculator.test.js
           python3 - <<'PY'
           from html.parser import HTMLParser
