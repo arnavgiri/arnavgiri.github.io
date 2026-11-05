@@ -7,7 +7,14 @@
     <language>en</language>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
     <atom:link href="https://arnavgiri.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 05 Nov 2026 05:27:37 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 06:56:01 GMT</lastBuildDate>
+    <item>
+      <title>Free QR Code Generator</title>
+      <link>https://arnavgiri.github.io/qr-code-generator/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/qr-code-generator/</guid>
+      <pubDate>Thu, 05 Nov 2026 06:56:01 GMT</pubDate>
+      <description>Create a free QR code for any URL or text. Customize colors, size and error correction, then download a crisp PNG or SVG. Private, no sign-up and entirely browser-based.</description>
+    </item>
     <item>
       <title>Password Generator</title>
       <link>https://arnavgiri.github.io/password-generator/</link>
