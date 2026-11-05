@@ -14,7 +14,6 @@ Personal portfolio and project showcase for **Arnav Giri**.
 
 - **Email:** arnavgiri@biharkalyan.in
 - **GitHub:** https://github.com/arnavgiri
-- **Profile:** https://biharkalyan.in/arnav-giri/
 
 ## Structure
 
@@ -31,3 +30,13 @@ Static website; no build process or dependencies.
 
 - [RSS feed](https://arnavgiri.github.io/feed.xml) — portfolio and three published tools.
 - [Sitemap](https://arnavgiri.github.io/sitemap.xml) — canonical public pages.
+
+## Project folders
+
+All three web tools are now maintained in this portfolio repository:
+
+- `study-focus-timer/`: timer HTML, CSS, and favicon.
+- `study-ambient-sounds/`: ambient mixer HTML, CSS, JavaScript, favicon, and bundled thunder audio.
+- `typing-speed-test/`: typing test HTML, CSS, JavaScript, and favicon.
+
+Each tool is independently accessible through its matching path on `https://arnavgiri.github.io/`.
