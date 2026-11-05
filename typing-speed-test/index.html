@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#182b30">
+<meta name="description" content="A focused typing speed test. Measure WPM, accuracy and progress without distractions.">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<title>Typing Speed Test — Arnav Giri</title>
+<link rel="stylesheet" href="./styles.css?v=84643911bc3d">
+<script src="./app.js" defer></script>
+</head>
+<body data-theme="dark">
+<div class="app">
+<header class="topbar">
+<a class="wordmark" href="./" aria-label="Typing Speed Test home"><span class="brand-icon" aria-hidden="true">⌨</span><span>type<span class="brand-accent">/</span>pace</span></a>
+<div class="top-actions">
+<span class="top-hint">A quiet place to practice</span>
+<button id="themeButton" class="icon-button" type="button" aria-label="Switch to light theme" title="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20.5 14.5A8 8 0 0 1 9.5 3.5 8.4 8.4 0 1 0 20.5 14.5Z"/></svg></button>
+</div>
+</header>
+<main>
+<section class="intro" aria-label="Typing test">
+<div class="intro-left"><h1>Find your rhythm.</h1><p>Type the passage below. Your time starts with your first keystroke.</p></div>
+<div class="intro-right"><span class="tiny-label">Test duration</span><div id="durationButtons" class="duration-buttons" role="group" aria-label="Test duration">
+<button type="button" data-duration="30" aria-pressed="false">30s</button>
+<button type="button" data-duration="60" aria-pressed="true">60s</button>
+<button type="button" data-duration="120" aria-pressed="false">120s</button>
+</div></div>
+</section>
+<section class="test" aria-label="Typing area">
+<div class="test-head"><div class="test-indicator"><span class="indicator-light" id="indicatorLight"></span><span id="testState">Ready to type</span></div><div class="keyboard-tip">Click the passage to focus <kbd>Tab</kbd> <span class="sep">/</span> Restart <kbd>Esc</kbd></div></div>
+<div class="metrics" aria-label="Live statistics">
+<div class="metric"><strong id="wpm" aria-live="off">0</strong><span>WPM</span></div>
+<div class="metric"><strong id="accuracy" aria-live="off">100<span class="unit">%</span></strong><span>Accuracy</span></div>
+<div class="metric"><strong id="errors" aria-live="off">0</strong><span>Mistakes</span></div>
+<div class="metric time-metric"><strong id="timeLeft" aria-live="off">60<span class="unit">s</span></strong><span>Time left</span></div>
+</div>
+<div class="time-track" aria-hidden="true"><div id="timeProgress"></div></div>
+<div class="typing-surface" id="typingSurface" role="group" aria-label="Type the passage here. Click to focus input.">
+<p id="prompt" class="prompt" aria-hidden="true"></p>
+<textarea id="typingInput" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Type the displayed passage" aria-describedby="inputHelp"></textarea>
+<span class="surface-cta" id="surfaceHint"><span class="key-symbol">↳</span> Click here and start typing</span>
+</div>
+<p class="sr-only" id="inputHelp">Type the letters shown above. Press Escape to restart the test. Use Tab to navigate to controls.</p>
+<div class="test-bottom"><div id="progressCopy" class="progress-copy">0 / 0 characters</div><div class="action-buttons"><button class="text-button" id="newPassage" type="button">New passage</button><button class="restart-button" id="restartButton" type="button"><span aria-hidden="true">↻</span> Restart test</button></div></div>
+</section>
+<section class="below">
+<div class="history-title"><div><h2>Your progress</h2><p>Results are saved on this device.</p></div><button id="clearHistory" class="clear-button" type="button">Clear history</button></div>
+<div class="history-layout"><div class="best-block"><span class="tiny-label">Personal best · <span id="bestMode">60s</span></span><div class="best-number"><strong id="bestWpm">—</strong><span>WPM</span></div><p id="bestAccuracy">Complete a test to set your record.</p></div><div class="history-block"><div class="history-table-head"><span>Recent tests</span><span>WPM</span><span>Accuracy</span></div><div id="historyList" class="history-list"><p class="empty-state">Your first result will appear here.</p></div></div></div>
+</section>
+</main>
+<footer class="footer"><span>Built for deliberate practice.</span><span>Arnav Giri</span></footer>
+</div>
+<div class="result-overlay" id="resultOverlay" aria-hidden="true"><div class="result-dialog" role="dialog" aria-modal="true" aria-labelledby="resultTitle" tabindex="-1"><button id="resultClose" class="result-close" type="button" aria-label="Close results">×</button><div class="result-kicker">Session complete</div><h2 id="resultTitle">Your rhythm, measured.</h2><div class="result-grid"><div><strong id="resultWpm">0</strong><span>WPM</span></div><div><strong id="resultAccuracy">0%</strong><span>Accuracy</span></div><div><strong id="resultMistakes">0</strong><span>Mistakes</span></div></div><p id="resultNote">Every session is progress.</p><button class="result-again" id="resultAgain" type="button">Try another test</button></div></div>
+</body>
+</html>

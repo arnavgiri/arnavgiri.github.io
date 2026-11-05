@@ -1,0 +1,806 @@
+:root {
+      color-scheme: dark;
+
+      --bg: #101827;
+      --bg-end: #172338;
+      --fg: #f1f5f9;
+      --muted: #a5b4c8;
+      --accent: #8be6bb;
+      --panel: #192638;
+      --tile: #1c2a3e;
+      --tile-text: #f1f5f9;
+      --border: rgba(255,255,255,.11);
+      --shadow: rgba(0,0,0,.24);
+
+      --roll-duration: 600ms;
+      --roll-easing: cubic-bezier(.22,1,.36,1);
+    }
+
+    /* Theme 1: Minimal Dark */
+    body[data-theme="dark"] {
+      --bg: #101827;
+      --bg-end: #172338;
+      --fg: #f1f5f9;
+      --muted: #a5b4c8;
+      --accent: #8be6bb;
+      --panel: #192638;
+      --tile: #1c2a3e;
+      --tile-text: #f1f5f9;
+      --border: rgba(255,255,255,.11);
+      --shadow: rgba(0,0,0,.24);
+    }
+
+    /* Theme 2: Clean Paper */
+    body[data-theme="paper"] {
+      color-scheme: light;
+      --bg: #f6f0e9;
+      --bg-end: #eae1d6;
+      --fg: #233247;
+      --muted: #756f6a;
+      --accent: #659f8d;
+      --panel: #fffaf4;
+      --tile: #fffdf9;
+      --tile-text: #243247;
+      --border: rgba(43,50,60,.12);
+      --shadow: rgba(73,56,39,.13);
+    }
+
+    /* Theme 3: Focused Green */
+    body[data-theme="green"] {
+      --bg: #071c1b;
+      --bg-end: #0e3430;
+      --fg: #ddf8e9;
+      --muted: #92bdb3;
+      --accent: #77dfb7;
+      --panel: #102c29;
+      --tile: #143c37;
+      --tile-text: #e1fcef;
+      --border: rgba(132,230,188,.16);
+      --shadow: rgba(0,0,0,.22);
+    }
+
+    /* Theme 4: Night Study */
+    body[data-theme="night"] {
+      --bg: #141631;
+      --bg-end: #333566;
+      --fg: #f0efff;
+      --muted: #aaa8d9;
+      --accent: #bbb2ff;
+      --panel: #22244b;
+      --tile: #292c58;
+      --tile-text: #f1eeff;
+      --border: rgba(211,200,255,.13);
+      --shadow: rgba(0,0,0,.23);
+    }
+
+    /* Theme 5: Calm Daylight */
+    body[data-theme="daylight"] {
+      color-scheme: light;
+      --bg: #d4e8f8;
+      --bg-end: #a8cfe9;
+      --fg: #1b395a;
+      --muted: #617b93;
+      --accent: #478cbb;
+      --panel: #eaf5fc;
+      --tile: #eff8ff;
+      --tile-text: #203c60;
+      --border: rgba(33,75,109,.13);
+      --shadow: rgba(42,93,134,.13);
+    }
+
+    /* Theme 6: Warm Focus */
+    body[data-theme="warm"] {
+      --bg: #191725;
+      --bg-end: #342a3c;
+      --fg: #fff0e3;
+      --muted: #bb9f9d;
+      --accent: #efb67f;
+      --panel: #282130;
+      --tile: #352838;
+      --tile-text: #ffeadc;
+      --border: rgba(255,201,164,.13);
+      --shadow: rgba(0,0,0,.22);
+    }
+
+    /* Theme 7: Ring + Flip */
+    body[data-theme="ring"] {
+      --bg: #0b1c30;
+      --bg-end: #153451;
+      --fg: #dff3ff;
+      --muted: #94b5ca;
+      --accent: #80d9f7;
+      --panel: #132b43;
+      --tile: #203750;
+      --tile-text: #e6f5ff;
+      --border: rgba(126,214,252,.17);
+      --shadow: rgba(0,0,0,.24);
+    }
+
+    /* Theme 8: Glass Flip */
+    body[data-theme="glass"] {
+      color-scheme: light;
+      --bg: #e9e6fa;
+      --bg-end: #bac8f6;
+      --fg: #303d73;
+      --muted: #67719b;
+      --accent: #7889cb;
+      --panel: #f4f1ff;
+      --tile: rgba(255,255,255,.48);
+      --tile-text: #303e73;
+      --border: rgba(255,255,255,.45);
+      --shadow: rgba(61,71,139,.14);
+    }
+
+    /* Theme 9: Study Minimal */
+    body[data-theme="study"] {
+      --bg: #101f29;
+      --bg-end: #1b303e;
+      --fg: #ecf5f4;
+      --muted: #96b2b6;
+      --accent: #82d7bd;
+      --panel: #172c38;
+      --tile: #203441;
+      --tile-text: #f0f8f6;
+      --border: rgba(197,237,234,.12);
+      --shadow: rgba(0,0,0,.23);
+    }
+
+    /* Theme 10: Serene Sunset */
+    body[data-theme="sunset"] {
+      --bg: #34304b;
+      --bg-end: #86677f;
+      --fg: #ffe8dc;
+      --muted: #d8bdcb;
+      --accent: #ffd0a0;
+      --panel: #40364f;
+      --tile: #38354e;
+      --tile-text: #ffe5d7;
+      --border: rgba(255,226,216,.16);
+      --shadow: rgba(0,0,0,.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: linear-gradient(
+        155deg,
+        var(--bg),
+        var(--bg-end)
+      );
+
+      color: var(--fg);
+      font-family: Inter, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      overflow: hidden;
+      transition: color .4s, background .4s;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Navigation */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 20px 24px;
+      pointer-events: none;
+    }
+
+    .icon-button {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--fg);
+      background: var(--panel);
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      opacity: .6;
+      transition: opacity .2s, background .2s;
+      pointer-events: auto;
+    }
+
+    .icon-button:hover,
+    .icon-button:focus-visible {
+      opacity: 1;
+    }
+
+    .icon-button svg {
+      width: 23px;
+      height: 23px;
+
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Fullscreen timer layout */
+    .timer-screen {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .timer-shell {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      isolation: isolate;
+    }
+
+    .timer-shell::before {
+      content: "";
+      position: absolute;
+      inset: -45px;
+
+      border: 2px solid transparent;
+      border-radius: 50%;
+
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body[data-theme="ring"] .timer-shell::before {
+      border-color: rgba(128,217,247,.35);
+      box-shadow:
+        0 0 50px rgba(128,217,247,.08),
+        inset 0 0 40px rgba(128,217,247,.05);
+    }
+
+    .timer-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: .018em;
+      margin: 0;
+
+      font-size: clamp(48px, 17vw, 290px);
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+
+      letter-spacing: -.045em;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    /*
+      TRUE MECHANICAL ODOMETER
+
+      New digit starts above.
+      Old digit is visible.
+      Both digits move downward together.
+    */
+
+    .digit-reel {
+      position: relative;
+      display: inline-block;
+
+      width: .66em;
+      height: 1.1em;
+      flex: 0 0 .66em;
+
+      overflow: hidden;
+
+      background: var(--tile);
+      color: var(--tile-text);
+
+      border: 1px solid var(--border);
+      border-radius: .075em;
+
+      box-shadow:
+        0 .04em .1em var(--shadow),
+        inset 0 .025em .06em rgba(255,255,255,.05);
+
+      isolation: isolate;
+      transform: translateZ(0);
+    }
+
+    /* Two stacked faces move as a single piece */
+    .reel-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 200%;
+
+      display: flex;
+      flex-direction: column;
+
+      transform: translateY(-50%);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .reel-face {
+      flex: 0 0 50%;
+      width: 100%;
+      height: 50%;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 1em;
+      font-weight: inherit;
+      line-height: 1;
+    }
+
+    /* Center the visible glyph, not the font's asymmetric line box.
+       The same offset applies to both reel faces, including while rolling. */
+    .reel-glyph {
+      display: block;
+      line-height: 1;
+      transform: translateY(.04em);
+    }
+
+    /*
+      Initial position:
+      [ New number ] - above the window
+      [ Old number ] - inside the window
+
+      Final position:
+      [ New number ] - inside the window
+      [ Old number ] - below the window
+    */
+
+    .digit-reel.rolling .reel-track {
+      animation: mechanicalRollDown
+        var(--roll-duration)
+        var(--roll-easing)
+        forwards;
+    }
+
+    @keyframes mechanicalRollDown {
+      0% {
+        transform: translateY(-50%);
+      }
+
+      100% {
+        transform: translateY(0%);
+      }
+    }
+
+    /* Mechanical split line */
+    .digit-reel::after {
+      content: "";
+      position: absolute;
+
+      top: 50%;
+      left: 0;
+      right: 0;
+
+      height: 1px;
+      background: rgba(0,0,0,.16);
+
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .timer-shell.finished .digit-reel {
+      border-color: var(--accent);
+    }
+
+    .separator {
+      display: inline-grid;
+      place-items: center;
+
+      flex: 0 0 .25em;
+      width: .25em;
+
+      color: var(--fg);
+      transform: translateY(-.045em);
+    }
+
+    /* Start and Reset */
+    .side-controls {
+      position: fixed;
+      top: 50%;
+      right: 17px;
+
+      transform: translateY(-50%);
+      z-index: 10;
+
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      opacity: .6;
+      transition: opacity .2s;
+    }
+
+    .side-controls:hover,
+    .side-controls:focus-within {
+      opacity: 1;
+    }
+
+    .control-button {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--fg);
+      background: var(--panel);
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      transition: color .2s, transform .2s;
+    }
+
+    .control-button:hover {
+      color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .control-button svg {
+      width: 22px;
+      height: 22px;
+
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Fullscreen: Only timer and X */
+    body.fullscreen-active .menu-button,
+    body.fullscreen-active .side-controls,
+    body.fullscreen-active .drawer,
+    body.fullscreen-active .backdrop {
+      display: none !important;
+    }
+
+    body.fullscreen-active .topbar {
+      justify-content: flex-end;
+    }
+
+    body.fullscreen-active .fullscreen-button {
+      background: transparent;
+      border-color: transparent;
+      opacity: .6;
+    }
+
+    body.fullscreen-active .fullscreen-button:hover,
+    body.fullscreen-active .fullscreen-button:focus-visible {
+      opacity: 1;
+      background: var(--panel);
+    }
+
+    /* Settings Backdrop */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 29;
+
+      background: rgba(0,0,0,.5);
+      opacity: 0;
+      visibility: hidden;
+
+      transition: opacity .25s, visibility .25s;
+    }
+
+    .backdrop.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Hamburger Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+
+      width: min(370px, 90vw);
+      z-index: 30;
+
+      padding: 25px 22px;
+
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+
+      transform: translateX(-100%);
+      transition: transform .25s ease;
+
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .drawer-header h2 {
+      margin: 0;
+      font-size: 21px;
+      font-weight: 650;
+    }
+
+    .close-button {
+      padding: 4px 9px;
+      background: transparent;
+      border: 0;
+      color: var(--fg);
+      font-size: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 13px;
+
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .presets {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+      margin-bottom: 26px;
+    }
+
+    .preset {
+      padding: 12px 10px;
+
+      color: var(--tile-text);
+      background: var(--tile);
+
+      border: 1px solid var(--border);
+      border-radius: 11px;
+
+      transition: border-color .2s;
+    }
+
+    .preset.active {
+      border-color: var(--accent);
+      box-shadow: inset 0 0 0 1px var(--accent);
+    }
+
+    .custom-row {
+      display: flex;
+      gap: 9px;
+      margin-bottom: 26px;
+    }
+
+    .custom-row input {
+      min-width: 0;
+      width: 100%;
+      padding: 12px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      color: var(--fg);
+      background: var(--bg);
+    }
+
+    .apply-button {
+      padding: 0 18px;
+
+      border: 0;
+      border-radius: 10px;
+
+      background: var(--accent);
+      color: #10261d;
+      font-weight: 700;
+    }
+
+    /* Theme Selector */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .theme-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      min-height: 49px;
+      padding: 12px 10px;
+
+      background: var(--bg);
+      color: var(--fg);
+
+      border: 1px solid var(--border);
+      border-radius: 11px;
+
+      text-align: left;
+      font-size: 12px;
+
+      transition: border-color .2s;
+    }
+
+    .theme-option.active {
+      border-color: var(--accent);
+      outline: 1px solid var(--accent);
+    }
+
+    .theme-dot {
+      flex: 0 0 23px;
+      width: 23px;
+      height: 23px;
+
+      display: block;
+
+      border-radius: 7px;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+      margin-bottom: 22px;
+
+      font-size: 14px;
+    }
+
+    .setting-row input {
+      width: 19px;
+      height: 19px;
+      accent-color: var(--accent);
+    }
+
+    .drawer-footer {
+      margin-top: 28px;
+      padding-top: 20px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .drawer-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .topbar {
+        padding: 14px;
+      }
+
+      .timer-display {
+        font-size: clamp(43px, 16vw, 110px);
+      }
+
+      .side-controls {
+        top: auto;
+        right: 50%;
+        bottom: 22px;
+
+        transform: translateX(50%);
+        flex-direction: row;
+      }
+
+      body[data-theme="ring"] .timer-shell::before {
+        inset: -18px;
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .digit-reel.rolling .reel-track {
+        animation: none;
+      }
+    }
+  
+/* BiharKalyan-style square scrollbar: narrow track, sharp edges. */
+:root {
+  --theme-primary: var(--accent);
+  --theme-hover: var(--text, var(--fg, var(--accent)));
+}
+html {
+  overflow-y: scroll;
+}
+/* Firefox: its native scrollbar API supports a thin width but not pixels. */
+@supports (-moz-appearance: none) {
+  html, body, .drawer, .settings-panel, textarea, * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme-primary) transparent;
+  }
+}
+/* Chromium, Edge and Safari: exact 6px square scrollbar. */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner {
+  background: transparent;
+  border: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-hover);
+}
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}

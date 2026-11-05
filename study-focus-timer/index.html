@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="A beautiful, distraction-free study timer with smooth mechanical odometer animations and calming themes.">
+  <link rel="icon" type="image/webp" href="./favicon.webp?v=4">
+  <title>Study Focus Timer</title>
+
+  <link rel="stylesheet" href="./styles.css?v=64aabd341e2e">
+</head>
+
+<body data-theme="dark">
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+
+    <button
+      class="icon-button menu-button"
+      id="menuButton"
+      aria-label="Open settings"
+      aria-controls="drawer"
+      aria-expanded="false"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <button
+      class="icon-button fullscreen-button"
+      id="fullscreenButton"
+      aria-label="Enter fullscreen"
+      title="Enter fullscreen"
+    >
+      <svg
+        id="fullscreenIcon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+        <path d="M16 3h3a2 2 0 0 1 2 2v3"/>
+        <path d="M21 16v3a2 2 0 0 1-2 2h-3"/>
+        <path d="M8 21H5a2 2 0 0 1-2-2v-3"/>
+      </svg>
+    </button>
+
+  </header>
+
+  <!-- Timer -->
+  <main class="timer-screen">
+
+    <div class="timer-shell" id="timerShell">
+      <h1
+        class="timer-display"
+        id="timerDisplay"
+        role="timer"
+        aria-label="25 minutes remaining"
+      ></h1>
+    </div>
+
+    <span
+      class="sr-only"
+      id="timerStatus"
+      role="status"
+      aria-live="polite"
+    ></span>
+
+  </main>
+
+  <!-- Timer Controls -->
+  <div class="side-controls">
+
+    <button
+      class="control-button"
+      id="startButton"
+      aria-label="Start timer"
+      title="Start / Pause"
+    >
+      <svg
+        id="playIcon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="m8 5 11 7-11 7z"/>
+      </svg>
+    </button>
+
+    <button
+      class="control-button"
+      id="resetButton"
+      aria-label="Reset timer"
+      title="Reset timer"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 11a9 9 0 1 1 2.5 6.3"/>
+        <path d="M3 4v7h7"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <!-- Settings Drawer -->
+  <div class="backdrop" id="backdrop"></div>
+
+  <aside
+    class="drawer"
+    id="drawer"
+    aria-label="Timer settings"
+    aria-hidden="true"
+  >
+
+    <div class="drawer-header">
+      <h2>Study Focus</h2>
+
+      <button
+        class="close-button"
+        id="closeMenu"
+        aria-label="Close settings"
+      >&times;</button>
+    </div>
+
+    <h3 class="section-title">Study Duration</h3>
+
+    <div class="presets">
+      <button class="preset" data-minutes="25">
+        25 Minutes
+      </button>
+
+      <button class="preset" data-minutes="45">
+        45 Minutes
+      </button>
+
+      <button class="preset" data-minutes="60">
+        60 Minutes
+      </button>
+
+      <button class="preset" data-minutes="5">
+        5 Min Break
+      </button>
+    </div>
+
+    <h3 class="section-title">Custom Duration</h3>
+
+    <div class="custom-row">
+      <input
+        id="customMinutes"
+        type="number"
+        min="1"
+        max="999"
+        placeholder="Minutes"
+        aria-label="Custom duration in minutes"
+      >
+
+      <button class="apply-button" id="applyCustom">
+        Set
+      </button>
+    </div>
+
+    <h3 class="section-title">Choose Theme</h3>
+
+    <div class="theme-grid" id="themeGrid">
+
+      <button class="theme-option" data-theme="dark">
+        <span
+          class="theme-dot"
+          style="background:#101827"
+        ></span>
+        Minimal Dark
+      </button>
+
+      <button class="theme-option" data-theme="paper">
+        <span
+          class="theme-dot"
+          style="background:#f6f0e9"
+        ></span>
+        Clean Paper
+      </button>
+
+      <button class="theme-option" data-theme="green">
+        <span
+          class="theme-dot"
+          style="background:#0e3430"
+        ></span>
+        Focused Green
+      </button>
+
+      <button class="theme-option" data-theme="night">
+        <span
+          class="theme-dot"
+          style="background:#333566"
+        ></span>
+        Night Study
+      </button>
+
+      <button class="theme-option" data-theme="daylight">
+        <span
+          class="theme-dot"
+          style="background:#a8cfe9"
+        ></span>
+        Calm Daylight
+      </button>
+
+      <button class="theme-option" data-theme="warm">
+        <span
+          class="theme-dot"
+          style="background:#342a3c"
+        ></span>
+        Warm Focus
+      </button>
+
+      <button class="theme-option" data-theme="ring">
+        <span
+          class="theme-dot"
+          style="background:#153451"
+        ></span>
+        Ring + Flip
+      </button>
+
+      <button class="theme-option" data-theme="glass">
+        <span
+          class="theme-dot"
+          style="background:#bac8f6"
+        ></span>
+        Glass Flip
+      </button>
+
+      <button class="theme-option" data-theme="study">
+        <span
+          class="theme-dot"
+          style="background:#1b303e"
+        ></span>
+        Study Minimal
+      </button>
+
+      <button class="theme-option" data-theme="sunset">
+        <span
+          class="theme-dot"
+          style="background:#86677f"
+        ></span>
+        Serene Sunset
+      </button>
+
+    </div>
+
+    <h3 class="section-title">Preferences</h3>
+
+    <label class="setting-row">
+      <span>Play alarm when finished</span>
+      <input type="checkbox" id="alarmToggle" checked>
+    </label>
+
+    <div class="drawer-footer">
+      A distraction-free timer for students.
+      <br><br>
+      Developed by
+      <span class="credit-name">Study Focus Timer</span>
+    </div>
+
+  </aside>
+
+  <script>
+    "use strict";
+
+    /* Persistent settings */
+
+    const STORAGE_KEY = "biharkalyan.studyFocus.v1";
+
+    const defaultSettings = {
+      theme: "dark",
+      duration: 25,
+      alarm: true
+    };
+
+    const allowedThemes = new Set([
+      "dark",
+      "paper",
+      "green",
+      "night",
+      "daylight",
+      "warm",
+      "ring",
+      "glass",
+      "study",
+      "sunset"
+    ]);
+
+    const timerDisplay =
+      document.getElementById("timerDisplay");
+
+    const timerShell =
+      document.getElementById("timerShell");
+
+    const timerStatus =
+      document.getElementById("timerStatus");
+
+    const startButton =
+      document.getElementById("startButton");
+
+    const resetButton =
+      document.getElementById("resetButton");
+
+    const playIcon =
+      document.getElementById("playIcon");
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const closeMenuButton =
+      document.getElementById("closeMenu");
+
+    const drawer =
+      document.getElementById("drawer");
+
+    const backdrop =
+      document.getElementById("backdrop");
+
+    const fullscreenButton =
+      document.getElementById("fullscreenButton");
+
+    const fullscreenIcon =
+      document.getElementById("fullscreenIcon");
+
+    const customMinutes =
+      document.getElementById("customMinutes");
+
+    const applyCustom =
+      document.getElementById("applyCustom");
+
+    const alarmToggle =
+      document.getElementById("alarmToggle");
+
+    const presets =
+      document.querySelectorAll(".preset");
+
+    const themeButtons =
+      document.querySelectorAll(".theme-option");
+
+    let settings = loadSettings();
+
+    let selectedSeconds = settings.duration * 60;
+    let remainingSeconds = selectedSeconds;
+
+    let running = false;
+    let endTime = 0;
+    let intervalId = null;
+    let audioContext = null;
+
+    let previousTime = "";
+    let reelElements = [];
+
+    const playSVG =
+      '<path d="m8 5 11 7-11 7z"/>';
+
+    const pauseSVG =
+      '<path d="M8 5v14M16 5v14"/>';
+
+    const expandSVG = `
+      <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+      <path d="M16 3h3a2 2 0 0 1 2 2v3"/>
+      <path d="M21 16v3a2 2 0 0 1-2 2h-3"/>
+      <path d="M8 21H5a2 2 0 0 1-2-2v-3"/>
+    `;
+
+    const exitSVG =
+      '<path d="M5 5l14 14M19 5L5 19"/>';
+
+    function loadSettings() {
+      try {
+        const saved = JSON.parse(
+          localStorage.getItem(STORAGE_KEY) || "{}"
+        );
+
+        const duration = Number(saved.duration);
+
+        return {
+          theme: allowedThemes.has(saved.theme)
+            ? saved.theme
+            : defaultSettings.theme,
+
+          duration:
+            Number.isInteger(duration) &&
+            duration >= 1 &&
+            duration <= 999
+              ? duration
+              : defaultSettings.duration,
+
+          alarm: typeof saved.alarm === "boolean"
+            ? saved.alarm
+            : defaultSettings.alarm
+        };
+      } catch {
+        return { ...defaultSettings };
+      }
+    }
+
+    function saveSettings() {
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(settings)
+        );
+      } catch {
+        // Continue if localStorage is unavailable.
+      }
+    }
+
+    function formatTime(totalSeconds) {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+
+      return (
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0")
+      );
+    }
+
+    /*
+      ODOMETER ENGINE
+
+      Each digit has one moving track with two faces.
+
+      Before movement:
+      incoming digit is above the window;
+      outgoing digit is visible.
+
+      After movement:
+      incoming digit is visible;
+      outgoing digit is below the window.
+    */
+
+    function makeFace(value) {
+      const face = document.createElement("span");
+      face.className = "reel-face";
+      const glyph = document.createElement("span");
+      glyph.className = "reel-glyph";
+      glyph.textContent = value;
+      face.appendChild(glyph);
+      return face;
+    }
+
+    function createReel(digit) {
+      const reel = document.createElement("span");
+      reel.className = "digit-reel";
+      reel.dataset.value = digit;
+
+      const track = document.createElement("span");
+      track.className = "reel-track";
+
+      // The second face is visible in the resting position.
+      track.appendChild(makeFace(digit));
+      track.appendChild(makeFace(digit));
+
+      reel.appendChild(track);
+
+      return reel;
+    }
+
+    function createTimerDisplay(time) {
+      timerDisplay.replaceChildren();
+      reelElements = [];
+
+      for (const char of time) {
+        if (char === ":") {
+          const separator = document.createElement("span");
+          separator.className = "separator";
+          separator.textContent = ":";
+          separator.setAttribute("aria-hidden", "true");
+
+          timerDisplay.appendChild(separator);
+        } else {
+          const reel = createReel(char);
+          reelElements.push(reel);
+          timerDisplay.appendChild(reel);
+        }
+      }
+
+      previousTime = time;
+    }
+
+    function finalizeReel(reel) {
+      const track = reel.querySelector(".reel-track");
+      if (!track) return;
+
+      track.onanimationend = null;
+
+      reel.classList.remove("rolling");
+
+      // Remove the active animation before resetting the track.
+      track.style.animation = "none";
+      track.style.transform = "translateY(-50%)";
+
+      const value = reel.dataset.value;
+
+      track.replaceChildren(
+        makeFace(value),
+        makeFace(value)
+      );
+    }
+
+    function rollDigit(reel, nextDigit) {
+      if (reel.dataset.value === nextDigit) return;
+
+      // Cancel any unfinished movement.
+      const oldDigit = reel.dataset.value;
+      finalizeReel(reel);
+
+      const track = reel.querySelector(".reel-track");
+
+      // New digit above, old digit below.
+      track.replaceChildren(
+        makeFace(nextDigit),
+        makeFace(oldDigit)
+      );
+
+      reel.dataset.value = nextDigit;
+
+      if (window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches) {
+        finalizeReel(reel);
+        return;
+      }
+
+      // Restore CSS-driven animation.
+      track.style.animation = "";
+
+      void track.offsetWidth;
+
+      track.onanimationend = event => {
+        if (event.target === track) {
+          finalizeReel(reel);
+        }
+      };
+
+      reel.classList.add("rolling");
+    }
+
+    function updateDisplay(animate = true) {
+      const time = formatTime(remainingSeconds);
+
+      if (time === previousTime) return;
+
+      if (!animate || time.length !== previousTime.length) {
+        createTimerDisplay(time);
+      } else {
+        const digits = time.replace(":", "");
+
+        for (let i = 0; i < digits.length; i++) {
+          rollDigit(reelElements[i], digits[i]);
+        }
+
+        previousTime = time;
+      }
+
+      timerDisplay.setAttribute(
+        "aria-label",
+        time + " remaining"
+      );
+
+      document.title = time + " | Study Focus Timer";
+    }
+
+    function updateControls() {
+      playIcon.innerHTML = running ? pauseSVG : playSVG;
+
+      const label = running
+        ? "Pause timer"
+        : "Start timer";
+
+      startButton.setAttribute("aria-label", label);
+      startButton.title = label;
+    }
+
+    function clearTimer() {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+
+      running = false;
+      updateControls();
+    }
+
+    /* Alarm */
+
+    function prepareAudio() {
+      if (!settings.alarm) return;
+
+      try {
+        const AudioContextClass =
+          window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContextClass) return;
+
+        if (!audioContext) {
+          audioContext = new AudioContextClass();
+        }
+
+        if (audioContext.state === "suspended") {
+          audioContext.resume().catch(() => {});
+        }
+      } catch (error) {
+        console.warn("Audio unavailable:", error);
+      }
+    }
+
+    function playAlarm() {
+      if (!settings.alarm || !audioContext) return;
+
+      try {
+        const now = audioContext.currentTime;
+
+        for (let i = 0; i < 3; i++) {
+          const oscillator = audioContext.createOscillator();
+          const gain = audioContext.createGain();
+
+          oscillator.type = "sine";
+          oscillator.frequency.value = 740;
+
+          oscillator.connect(gain);
+          gain.connect(audioContext.destination);
+
+          const start = now + i * .48;
+
+          gain.gain.setValueAtTime(0, start);
+
+          gain.gain.linearRampToValueAtTime(
+            .18,
+            start + .04
+          );
+
+          gain.gain.exponentialRampToValueAtTime(
+            .001,
+            start + .34
+          );
+
+          oscillator.start(start);
+          oscillator.stop(start + .36);
+        }
+      } catch (error) {
+        console.warn("Unable to play alarm:", error);
+      }
+    }
+
+    /* Timer Logic */
+
+    function finishTimer() {
+      clearTimer();
+
+      remainingSeconds = 0;
+      updateDisplay(true);
+
+      timerShell.classList.add("finished");
+
+      timerStatus.textContent =
+        "Study session completed.";
+
+      playAlarm();
+    }
+
+    function tick() {
+      if (!running) return;
+
+      remainingSeconds = Math.max(
+        0,
+        Math.ceil((endTime - Date.now()) / 1000)
+      );
+
+      updateDisplay(true);
+
+      if (remainingSeconds === 0) {
+        finishTimer();
+      }
+    }
+
+    function startTimer() {
+      if (running) return;
+
+      if (remainingSeconds === 0) {
+        remainingSeconds = selectedSeconds;
+        updateDisplay(false);
+      }
+
+      prepareAudio();
+
+      timerShell.classList.remove("finished");
+
+      timerStatus.textContent =
+        "Study session started.";
+
+      endTime = Date.now() + remainingSeconds * 1000;
+      running = true;
+
+      updateControls();
+      tick();
+
+      intervalId = setInterval(tick, 100);
+    }
+
+    function pauseTimer() {
+      if (!running) return;
+
+      tick();
+
+      if (!running) return;
+
+      clearTimer();
+
+      timerStatus.textContent =
+        "Study session paused.";
+    }
+
+    function resetTimer() {
+      clearTimer();
+
+      remainingSeconds = selectedSeconds;
+      timerShell.classList.remove("finished");
+
+      updateDisplay(false);
+
+      timerStatus.textContent = "Timer reset.";
+    }
+
+    /* Presets */
+
+    function updatePresets() {
+      presets.forEach(button => {
+        const minutes = Number(button.dataset.minutes);
+
+        button.classList.toggle(
+          "active",
+          minutes === settings.duration
+        );
+      });
+    }
+
+    function setDuration(minutes) {
+      if (
+        !Number.isInteger(minutes) ||
+        minutes < 1 ||
+        minutes > 999
+      ) {
+        return;
+      }
+
+      settings.duration = minutes;
+      selectedSeconds = minutes * 60;
+
+      saveSettings();
+
+      resetTimer();
+      updatePresets();
+      closeSettings();
+    }
+
+    /* Themes */
+
+    function setTheme(theme) {
+      if (!allowedThemes.has(theme)) return;
+
+      settings.theme = theme;
+      document.body.dataset.theme = theme;
+
+      themeButtons.forEach(button => {
+        const selected = button.dataset.theme === theme;
+
+        button.classList.toggle("active", selected);
+
+        button.setAttribute(
+          "aria-pressed",
+          String(selected)
+        );
+      });
+
+      saveSettings();
+    }
+
+    /* Menu */
+
+    function openSettings() {
+      if (document.fullscreenElement) return;
+
+      drawer.classList.add("open");
+      backdrop.classList.add("visible");
+
+      drawer.setAttribute("aria-hidden", "false");
+      menuButton.setAttribute("aria-expanded", "true");
+
+      closeMenuButton.focus();
+    }
+
+    function closeSettings() {
+      if (drawer.contains(document.activeElement)) {
+        menuButton.focus();
+      }
+
+      drawer.classList.remove("open");
+      backdrop.classList.remove("visible");
+
+      drawer.setAttribute("aria-hidden", "true");
+      menuButton.setAttribute("aria-expanded", "false");
+    }
+
+    /* Fullscreen */
+
+    function updateFullscreenUI() {
+      const fullscreen = Boolean(document.fullscreenElement);
+
+      document.body.classList.toggle(
+        "fullscreen-active",
+        fullscreen
+      );
+
+      fullscreenIcon.innerHTML =
+        fullscreen ? exitSVG : expandSVG;
+
+      const label = fullscreen
+        ? "Exit fullscreen"
+        : "Enter fullscreen";
+
+      fullscreenButton.setAttribute("aria-label", label);
+      fullscreenButton.title = label;
+
+      if (fullscreen) {
+        closeSettings();
+      }
+    }
+
+    /* Event Listeners */
+
+    startButton.addEventListener("click", () => {
+      running ? pauseTimer() : startTimer();
+    });
+
+    resetButton.addEventListener("click", resetTimer);
+
+    menuButton.addEventListener("click", openSettings);
+    closeMenuButton.addEventListener("click", closeSettings);
+    backdrop.addEventListener("click", closeSettings);
+
+    presets.forEach(button => {
+      button.addEventListener("click", () => {
+        setDuration(Number(button.dataset.minutes));
+      });
+    });
+
+    themeButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        setTheme(button.dataset.theme);
+      });
+    });
+
+    applyCustom.addEventListener("click", () => {
+      const minutes = Number(customMinutes.value);
+
+      if (
+        !Number.isInteger(minutes) ||
+        minutes < 1 ||
+        minutes > 999
+      ) {
+        customMinutes.setCustomValidity(
+          "Enter a whole number between 1 and 999."
+        );
+
+        customMinutes.reportValidity();
+        return;
+      }
+
+      customMinutes.setCustomValidity("");
+      setDuration(minutes);
+    });
+
+    customMinutes.addEventListener("input", () => {
+      customMinutes.setCustomValidity("");
+    });
+
+    customMinutes.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        applyCustom.click();
+      }
+    });
+
+    alarmToggle.addEventListener("change", () => {
+      settings.alarm = alarmToggle.checked;
+      saveSettings();
+    });
+
+    fullscreenButton.addEventListener("click", async () => {
+      try {
+        if (!document.fullscreenElement) {
+          if (!document.documentElement.requestFullscreen) {
+            return;
+          }
+
+          closeSettings();
+
+          await document.documentElement.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (error) {
+        console.warn("Fullscreen unavailable:", error);
+      }
+    });
+
+    document.addEventListener(
+      "fullscreenchange",
+      updateFullscreenUI
+    );
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeSettings();
+      }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        tick();
+      }
+    });
+
+    /* Initialize */
+
+    alarmToggle.checked = settings.alarm;
+
+    setTheme(settings.theme);
+    updatePresets();
+
+    updateDisplay(false);
+    updateControls();
+    updateFullscreenUI();
+
+  </script>
+
+</body>
+</html>

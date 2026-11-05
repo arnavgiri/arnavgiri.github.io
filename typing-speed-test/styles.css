@@ -1,0 +1,53 @@
+/* TYPE / PACE — a typography-first practice workspace */
+:root{color-scheme:dark;--bg:#182b30;--surface:#20363a;--surface2:#2a4447;--text:#edf1eb;--muted:#94aaab;--subtle:#6c8587;--accent:#d5bb91;--error:#ed938a;--rule:rgba(221,237,229,.14);--active:#d5bb91}
+body[data-theme="light"]{color-scheme:light;--bg:#edf0eb;--surface:#fafbf6;--surface2:#e4e9e4;--text:#273e41;--muted:#718787;--subtle:#87999a;--accent:#8a6946;--error:#c25149;--rule:rgba(44,70,71,.16);--active:#8a6946}
+*{box-sizing:border-box}html{min-height:100%}body{margin:0;background:var(--bg);color:var(--text);font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}button,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:4px}a{color:inherit}.app{max-width:1120px;min-height:100vh;margin:auto;padding:0 30px;display:flex;flex-direction:column}.topbar{height:76px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center}.wordmark{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:21px;font-weight:720;letter-spacing:-.07em}.brand-icon{font-family:Georgia,serif;font-size:29px;line-height:1;color:var(--accent)}.brand-accent{color:var(--accent)}.top-actions{display:flex;align-items:center;gap:20px}.top-hint{font-size:12px;color:var(--muted)}.icon-button{border:1px solid var(--rule);border-radius:50%;background:transparent;width:38px;height:38px;display:grid;place-items:center;color:var(--text)}.icon-button svg{width:19px;height:19px}
+.intro{display:flex;justify-content:space-between;gap:25px;align-items:end;padding:38px 0 26px}.intro h1{font-size:clamp(34px,4.7vw,59px);line-height:1.05;font-weight:660;letter-spacing:-.065em;margin:0 0 12px}.intro p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}.intro-right{flex-shrink:0;text-align:right}.tiny-label{font-size:11px;letter-spacing:.01em;color:var(--muted)}.duration-buttons{display:flex;gap:6px;margin-top:9px}.duration-buttons button{border:1px solid var(--rule);background:transparent;color:var(--muted);padding:9px 14px;border-radius:6px;font-size:13px}.duration-buttons button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:700}
+.test{border-top:1px solid var(--rule);padding-top:16px}.test-head{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}.test-indicator{display:flex;align-items:center;gap:9px}.indicator-light{width:7px;height:7px;border-radius:50%;background:var(--muted)}.indicator-light.running{background:#86b7a1}.indicator-light.done{background:var(--accent)}.keyboard-tip{color:var(--subtle)}kbd{display:inline-block;padding:2px 5px;border:1px solid var(--rule);border-radius:3px;font-size:11px;font-family:inherit}.sep{padding:0 7px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:25px 0 19px}.metric{display:flex;flex-direction:column;gap:3px}.metric strong{font-variant-numeric:tabular-nums;font-size:clamp(34px,5.3vw,62px);line-height:1.05;font-weight:580;letter-spacing:-.07em}.metric span:not(.unit){color:var(--muted);font-size:12px}.metric strong .unit{font-size:.42em;letter-spacing:0;margin-left:3px;color:var(--muted)}.time-metric{text-align:right}.time-track{height:2px;background:var(--rule);overflow:hidden}.time-track div{height:100%;width:100%;background:var(--accent);transition:width .16s linear}
+.typing-surface{position:relative;min-height:220px;padding:29px 4px 37px;cursor:text}.prompt{position:relative;z-index:1;margin:0;max-height:188px;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere;font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:clamp(20px,2.45vw,27px);font-weight:450;line-height:1.9;letter-spacing:.012em;color:var(--subtle);pointer-events:none}.prompt span{position:relative}.prompt .correct{color:var(--text)}.prompt .incorrect{color:var(--error);background:rgba(237,147,138,.12);border-radius:2px}.prompt .cursor::before{content:"";position:absolute;left:-2px;top:4px;bottom:2px;width:2px;background:var(--accent);animation:blink 1s step-end infinite}.prompt .pending{color:var(--subtle)}@keyframes blink{50%{opacity:0}}.typing-surface:focus-within .cursor::before{animation:none}.typing-surface textarea{position:absolute;inset:0;width:100%;height:100%;opacity:.015;z-index:2;resize:none;cursor:text;color:transparent;background:transparent;border:0;outline:0;padding:0;caret-color:transparent;overflow:hidden}.surface-cta{position:absolute;right:4px;bottom:12px;font-size:12px;color:var(--muted);pointer-events:none;transition:opacity .2s}.surface-cta.hidden{opacity:0}.key-symbol{color:var(--accent);font-size:16px;margin-right:4px}.test-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0 22px;border-bottom:1px solid var(--rule)}.progress-copy{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}.action-buttons{display:flex;gap:12px;align-items:center}.text-button,.restart-button{border:0;background:none;color:var(--muted);font-size:12px;padding:10px}.restart-button{border:1px solid var(--rule);border-radius:6px;color:var(--text);padding:10px 14px}.restart-button span{color:var(--accent);margin-right:6px}
+.below{padding:27px 0 20px}.history-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}.history-title h2{margin:0;font-size:20px;font-weight:650;letter-spacing:-.04em}.history-title p{margin:5px 0 0;color:var(--muted);font-size:12px}.clear-button{background:none;border:0;color:var(--muted);font-size:12px;padding:7px}.clear-button:hover,.text-button:hover{color:var(--text)}.history-layout{display:grid;grid-template-columns:1fr 1.55fr;border-top:1px solid var(--rule)}.best-block{padding:18px 20px 10px 0;border-right:1px solid var(--rule)}.best-number{display:flex;align-items:baseline;gap:9px;margin-top:9px}.best-number strong{font-size:56px;line-height:1;font-weight:590;letter-spacing:-.07em;font-variant-numeric:tabular-nums}.best-number span{font-size:12px;color:var(--muted)}.best-block p{font-size:12px;color:var(--muted);line-height:1.6;margin:12px 0 0}.history-block{padding:18px 0 0 25px}.history-table-head,.history-row{display:grid;grid-template-columns:1fr 70px 75px;align-items:center;gap:8px;font-size:12px}.history-table-head{color:var(--muted);margin-bottom:10px}.history-table-head span:not(:first-child),.history-row span:not(:first-child){text-align:right}.history-row{padding:9px 0;border-top:1px solid var(--rule)}.history-row span:first-child{color:var(--muted)}.history-row span:nth-child(2){font-weight:700}.empty-state{font-size:12px;color:var(--muted);line-height:1.7}.footer{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:auto;padding:20px 0;border-top:1px solid var(--rule);font-size:12px;color:var(--muted)}.footer a{color:var(--text);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:4px}
+.result-overlay{position:fixed;inset:0;background:rgba(11,22,25,.75);z-index:10;display:none;align-items:center;justify-content:center;padding:18px}.result-overlay.open{display:flex}.result-dialog{position:relative;width:min(100%,510px);background:var(--surface);padding:36px;border:1px solid var(--rule);border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.2)}.result-close{position:absolute;right:20px;top:16px;border:0;background:none;color:var(--muted);font-size:25px}.result-kicker{color:var(--accent);font-size:13px}.result-dialog h2{font-size:clamp(28px,5vw,42px);letter-spacing:-.055em;margin:11px 0 25px;line-height:1.16}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:20px 0}.result-grid div{display:flex;flex-direction:column;gap:7px}.result-grid strong{font-size:36px;letter-spacing:-.055em}.result-grid span{font-size:12px;color:var(--muted)}.result-dialog p{color:var(--muted);font-size:13px;line-height:1.6;margin:20px 0}.result-again{background:var(--accent);color:var(--bg);border:0;padding:13px 18px;border-radius:6px;font-weight:700;font-size:13px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:750px){.app{padding:0 18px}.intro{padding:26px 0 22px;align-items:start;flex-direction:column;gap:22px}.intro-right{text-align:left}.metrics{margin-top:20px}.typing-surface{min-height:230px}.prompt{font-size:21px;line-height:1.85}.top-hint{display:none}}@media(max-width:480px){.topbar{height:66px}.intro h1{font-size:38px}.metrics{gap:9px}.metric strong{font-size:36px}.metric strong .unit{font-size:.48em}.typing-surface{padding-top:23px;min-height:260px}.prompt{font-size:18px;line-height:1.9;max-height:225px}.test-bottom{align-items:flex-start;flex-direction:column}.action-buttons{align-self:flex-end}.history-layout{grid-template-columns:1fr}.best-block{border-right:0;border-bottom:1px solid var(--rule);padding-bottom:22px}.history-block{padding:19px 0 0}.footer{flex-wrap:wrap}.result-dialog{padding:25px}.result-grid strong{font-size:29px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* BiharKalyan-style square scrollbar: narrow track, sharp edges. */
+:root {
+  --theme-primary: var(--accent);
+  --theme-hover: var(--text, var(--fg, var(--accent)));
+}
+html {
+  overflow-y: scroll;
+}
+/* Firefox: its native scrollbar API supports a thin width but not pixels. */
+@supports (-moz-appearance: none) {
+  html, body, .drawer, .settings-panel, textarea, * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme-primary) transparent;
+  }
+}
+/* Chromium, Edge and Safari: exact 6px square scrollbar. */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner {
+  background: transparent;
+  border: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-hover);
+}
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
