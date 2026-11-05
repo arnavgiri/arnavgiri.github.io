@@ -87,3 +87,25 @@ nav .nav-contact:hover{color:var(--paper);background:var(--accent)}
 @media(max-width:850px){.hero{grid-template-columns:minmax(0,1fr) minmax(245px,.8fr);gap:28px}.hero h1{font-size:clamp(54px,9vw,80px)}.project{grid-template-columns:42px 1fr 36px}.project-type{display:none}.section-top,.about-inner{grid-template-columns:1fr;gap:19px}.service-grid{gap:22px}}
 @media(max-width:630px){.shell{padding:0 20px}.topbar{height:68px}nav{gap:16px}nav a:not(.nav-contact){display:none}nav .nav-contact{padding:10px 13px}.hero{display:flex;flex-direction:column;align-items:stretch;padding-top:52px;padding-bottom:57px}.hero-index{margin-bottom:27px}.hero h1{font-size:clamp(62px,14vw,88px)}.hero-lead{margin-top:23px}.portrait-wrap{max-width:600px;margin:14px auto;width:100%}.portrait{aspect-ratio:4/5.1}.strip{align-items:start;flex-direction:column}.strip-items{gap:9px 17px}.strip-items span:not(:first-child):before{margin-right:13px}.section{padding-top:70px;padding-bottom:70px}.section-title{font-size:45px}.section-desc{font-size:16px}.section-top{margin-bottom:30px}.project{gap:12px;padding:23px 0;grid-template-columns:27px 1fr 34px}.project h3{font-size:25px}.project-arrow{width:34px;height:34px}.service-grid{grid-template-columns:1fr;gap:0}.service{padding:26px 0;border-bottom:1px solid rgba(255,255,255,.15)}.service h3{margin:15px 0 7px}.about-copy p{font-size:20px}.contact h2{font-size:clamp(54px,11vw,70px)}.contact-head{display:block}.contact-actions{align-items:stretch;flex-direction:column}.contact-actions .cta{justify-content:space-between}.footer{align-items:start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* One external profile link, placed immediately beneath the tools list. */
+.project-affiliation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 19px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.project-affiliation a {
+  color: var(--ink);
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.project-affiliation a:hover { color: var(--accent); }
+@media (max-width: 480px) {
+  .project-affiliation { align-items: flex-start; }
+}
