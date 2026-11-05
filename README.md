@@ -44,3 +44,7 @@ Email: arnavgiri@biharkalyan.in · [GitHub](https://github.com/arnavgiri)
 ## CI migration status
 
 The public smoke-test workflow and duplicate test scripts were moved to the private build repository. This public repository retains its Node.js build scripts and deployment workflow until private publishing is configured and verified. Published HTML, assets, RSS and sitemap remain public.
+
+## Homepage asset structure
+
+The homepage loads its stylesheet from `assets/css/styles.css` and its JavaScript from `assets/js/script.js`. Each standalone tool keeps its own local assets.
