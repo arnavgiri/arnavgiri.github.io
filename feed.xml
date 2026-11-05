@@ -9,32 +9,11 @@
     <atom:link href="https://arnavgiri.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>Thu, 05 Nov 2026 05:27:37 GMT</lastBuildDate>
     <item>
-      <title>Arnav Giri — Portfolio</title>
-      <link>https://arnavgiri.github.io/</link>
-      <guid isPermaLink="true">https://arnavgiri.github.io/</guid>
-      <pubDate>Wed, 04 Nov 2026 11:33:42 GMT</pubDate>
-      <description>Explore Arnav Giri&#39;s web development portfolio, selected work, services, and contact information.</description>
-    </item>
-    <item>
-      <title>Study Focus Timer — Free Study Tool</title>
-      <link>https://arnavgiri.github.io/study-focus-timer/</link>
-      <guid isPermaLink="true">https://arnavgiri.github.io/study-focus-timer/</guid>
-      <pubDate>Wed, 04 Nov 2026 04:57:22 GMT</pubDate>
-      <description>Stay focused with a distraction-free study timer, custom durations, fullscreen mode, and calming themes.</description>
-    </item>
-    <item>
-      <title>Study Ambient Sounds — Free Sound Mixer</title>
-      <link>https://arnavgiri.github.io/study-ambient-sounds/</link>
-      <guid isPermaLink="true">https://arnavgiri.github.io/study-ambient-sounds/</guid>
-      <pubDate>Wed, 04 Nov 2026 06:16:56 GMT</pubDate>
-      <description>Mix rain, forest, fan, wind, white noise, and thunder with adjustable volume controls and a sleep timer.</description>
-    </item>
-    <item>
-      <title>Typing Speed Test — Free Typing Practice</title>
-      <link>https://arnavgiri.github.io/typing-speed-test/</link>
-      <guid isPermaLink="true">https://arnavgiri.github.io/typing-speed-test/</guid>
-      <pubDate>Wed, 04 Nov 2026 07:13:08 GMT</pubDate>
-      <description>Measure words per minute, accuracy, and mistakes with 30-, 60-, and 120-second typing tests.</description>
+      <title>Password Generator</title>
+      <link>https://arnavgiri.github.io/password-generator/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/password-generator/</guid>
+      <pubDate>Thu, 05 Nov 2026 05:27:05 GMT</pubDate>
+      <description>Free secure password generator. Create strong random passwords with custom length, uppercase, numbers and symbols. Cryptographically random, private and browser-based.</description>
     </item>
     <item>
       <title>Age Calculator — Exact Age in Years, Months and Days</title>
@@ -44,11 +23,32 @@
       <description>Calculate your age by date of birth today or on any cut-off date, see total days lived and next birthday countdown.</description>
     </item>
     <item>
-      <title>Password Generator</title>
-      <link>https://arnavgiri.github.io/password-generator/</link>
-      <guid isPermaLink="true">https://arnavgiri.github.io/password-generator/</guid>
-      <pubDate>Thu, 05 Nov 2026 05:27:05 GMT</pubDate>
-      <description>Free secure password generator. Create strong random passwords with custom length, uppercase, numbers and symbols. Cryptographically random, private and browser-based.</description>
+      <title>Arnav Giri — Portfolio</title>
+      <link>https://arnavgiri.github.io/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/</guid>
+      <pubDate>Wed, 04 Nov 2026 11:33:42 GMT</pubDate>
+      <description>Explore Arnav Giri&#39;s web development portfolio, selected work, services, and contact information.</description>
+    </item>
+    <item>
+      <title>Typing Speed Test — Free Typing Practice</title>
+      <link>https://arnavgiri.github.io/typing-speed-test/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/typing-speed-test/</guid>
+      <pubDate>Wed, 04 Nov 2026 07:13:08 GMT</pubDate>
+      <description>Measure words per minute, accuracy, and mistakes with 30-, 60-, and 120-second typing tests.</description>
+    </item>
+    <item>
+      <title>Study Ambient Sounds — Free Sound Mixer</title>
+      <link>https://arnavgiri.github.io/study-ambient-sounds/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/study-ambient-sounds/</guid>
+      <pubDate>Wed, 04 Nov 2026 06:16:56 GMT</pubDate>
+      <description>Mix rain, forest, fan, wind, white noise, and thunder with adjustable volume controls and a sleep timer.</description>
+    </item>
+    <item>
+      <title>Study Focus Timer — Free Study Tool</title>
+      <link>https://arnavgiri.github.io/study-focus-timer/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/study-focus-timer/</guid>
+      <pubDate>Wed, 04 Nov 2026 04:57:22 GMT</pubDate>
+      <description>Stay focused with a distraction-free study timer, custom durations, fullscreen mode, and calming themes.</description>
     </item>
   </channel>
 </rss>
