@@ -23,13 +23,6 @@
       <description>Calculate your age by date of birth today or on any cut-off date, see total days lived and next birthday countdown.</description>
     </item>
     <item>
-      <title>Arnav Giri — Portfolio</title>
-      <link>https://arnavgiri.github.io/</link>
-      <guid isPermaLink="true">https://arnavgiri.github.io/</guid>
-      <pubDate>Wed, 04 Nov 2026 11:33:42 GMT</pubDate>
-      <description>Explore Arnav Giri&#39;s web development portfolio, selected work, services, and contact information.</description>
-    </item>
-    <item>
       <title>Typing Speed Test — Free Typing Practice</title>
       <link>https://arnavgiri.github.io/typing-speed-test/</link>
       <guid isPermaLink="true">https://arnavgiri.github.io/typing-speed-test/</guid>
@@ -49,6 +42,13 @@
       <guid isPermaLink="true">https://arnavgiri.github.io/study-focus-timer/</guid>
       <pubDate>Wed, 04 Nov 2026 04:57:22 GMT</pubDate>
       <description>Stay focused with a distraction-free study timer, custom durations, fullscreen mode, and calming themes.</description>
+    </item>
+    <item>
+      <title>Arnav Giri — Portfolio</title>
+      <link>https://arnavgiri.github.io/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/</guid>
+      <pubDate>Wed, 04 Nov 2026 11:33:42 GMT</pubDate>
+      <description>Explore Arnav Giri&#39;s web development portfolio, selected work, services, and contact information.</description>
     </item>
   </channel>
 </rss>
