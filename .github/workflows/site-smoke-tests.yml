@@ -19,6 +19,7 @@ jobs:
           node --check app.js
           node --check study-ambient-sounds/app.js
           node --check typing-speed-test/app.js
+          node --check age-calculator/app.js
           python3 - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
@@ -62,7 +63,7 @@ jobs:
                   if "imagesrcset" in d:
                       self.links.extend(item.strip().split()[0] for item in d["imagesrcset"].split(","))
           pages = [Path("index.html"), *(Path(p) / "index.html" for p in (
-              "study-focus-timer", "study-ambient-sounds", "typing-speed-test"
+              "study-focus-timer", "study-ambient-sounds", "typing-speed-test", "age-calculator"
           ))]
           parsers = {}
           for page in pages:
@@ -84,7 +85,7 @@ jobs:
               assert "https://biharkalyan.in" not in content, f"External brand link in {page}"
           home = parsers["index.html"]
           tool_links = [a for a in home.anchors if a.get("class") == "project"]
-          assert len(tool_links) == 4, "Expected four homepage project links"
+          assert len(tool_links) == 5, "Expected five homepage project links"
           assert all(a.get("target") == "_blank" and "noopener" in a.get("rel", "") for a in tool_links)
           brand_links = [a for a in home.anchors if a.get("href", "").startswith("https://biharkalyan.in/")]
           assert len(brand_links) == 1, "Expected exactly one BiharKalyan link on homepage"
