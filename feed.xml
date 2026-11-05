@@ -5,6 +5,7 @@
     <link>https://arnavgiri.github.io/</link>
     <description>Portfolio updates and useful web tools built by Arnav Giri.</description>
     <language>en</language>
+    <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
     <atom:link href="https://arnavgiri.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>Thu, 05 Nov 2026 04:02:29 GMT</lastBuildDate>
     <item>
