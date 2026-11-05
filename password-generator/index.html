@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2f2eb">
+<title>Password Generator — Create Strong Random Passwords | Arnav Giri</title>
+<meta name="description" content="Free secure password generator. Create strong random passwords with custom length, uppercase, numbers and symbols. Cryptographically random, private and browser-based.">
+<link rel="canonical" href="https://arnavgiri.github.io/password-generator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Secure Password Generator — Random Passwords">
+<meta property="og:description" content="Generate strong, unique passwords instantly. Adjustable length and character options. All generation runs in your browser.">
+<meta property="og:url" content="https://arnavgiri.github.io/password-generator/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles.css">
+<script src="./app.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Password Generator","url":"https://arnavgiri.github.io/password-generator/","applicationCategory":"SecurityApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Cryptographically secure, browser-based random password generator with adjustable length and character sets."}</script>
+</head>
+<body>
+<a class="skip" href="#generator">Skip to generator</a>
+<header class="header"><div class="wrap header-content">
+<a class="brand" href="../"><span class="brand-mark">AG</span><span>Arnav Giri <small>/ Free tools</small></span></a>
+<a class="back" href="../#work">Explore tools <span aria-hidden="true">↗</span></a>
+</div></header>
+<main>
+<section class="wrap hero">
+<div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> PRIVATE BY DESIGN <span class="eyebrow-line"></span> FREE ONLINE TOOL</div>
+<h1>Password<br><em>Generator.</em></h1>
+<div class="intro-bottom"><p>Create strong, unique passwords in seconds. Customize the length and characters, then copy with one click. <strong>Everything happens locally in your browser.</strong></p><span class="hero-detail" aria-hidden="true">01 — SECURITY ESSENTIALS</span></div>
+</section>
+<section class="wrap" id="generator" aria-label="Secure password generator">
+<div class="generator">
+<div class="generator-top"><span>YOUR NEW PASSWORD</span><span class="secure-tag"><span class="mini-dot"></span> GENERATED LOCALLY</span></div>
+<div class="output-area">
+<div class="password-value" id="password-value" role="status" aria-live="off" aria-label="Generated password">Generating…</div>
+<div class="output-buttons">
+<button type="button" id="toggle-visibility" class="icon-button" aria-label="Hide password" aria-pressed="true" title="Show or hide password"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 6.5 12 6.5 21.5 12 21.5 12 18 17.5 12 17.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></button>
+<button type="button" id="copy-button" class="copy-button">Copy <span aria-hidden="true">↗</span></button>
+</div>
+</div>
+<div class="output-bottom"><div class="strength"><span class="strength-label">Estimated strength</span><strong id="strength-text">—</strong></div><div class="meter" aria-hidden="true"><span class="meter-bar" id="strength-bar"></span></div><span class="entropy" id="entropy-text">—</span></div>
+<p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+<div class="settings">
+<div class="settings-header"><div><span class="section-code">01 / SETTINGS</span><h2>Make it yours.</h2></div><span class="setting-aside">Control your password</span></div>
+<div class="length-row"><label for="length-range">Password length</label><div class="length-input"><button type="button" id="length-minus" aria-label="Decrease length">−</button><output id="length-output" for="length-range">20</output><button type="button" id="length-plus" aria-label="Increase length">+</button></div></div>
+<input id="length-range" type="range" min="8" max="128" value="20" step="1" aria-label="Password length">
+<div class="range-endpoints"><span>8 CHARACTERS</span><span>128 CHARACTERS</span></div>
+<fieldset class="options">
+<legend>Include characters</legend>
+<label class="option"><span><strong>Uppercase letters</strong><small>A – Z</small></span><input type="checkbox" id="use-upper" checked></label>
+<label class="option"><span><strong>Lowercase letters</strong><small>a – z</small></span><input type="checkbox" id="use-lower" checked></label>
+<label class="option"><span><strong>Numbers</strong><small>0 – 9</small></span><input type="checkbox" id="use-numbers" checked></label>
+<label class="option"><span><strong>Symbols</strong><small>! @ # $ % &amp; …</small></span><input type="checkbox" id="use-symbols" checked></label>
+<label class="option option-extra"><span><strong>Avoid similar characters</strong><small>Exclude look-alikes such as 0, O, 1, l and I</small></span><input type="checkbox" id="avoid-ambiguous"></label>
+</fieldset>
+<p id="option-error" class="option-error" role="alert" hidden></p>
+<button type="button" class="generate-button" id="generate-button">Generate new password <span aria-hidden="true">↗</span></button>
+<p class="security-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>No accounts. No password storage. No server requests for generation.</p>
+</div>
+</div>
+</section>
+<section class="wrap highlights" aria-label="Features"><div><span class="highlight-num">01</span><strong>Cryptographically random</strong><p>Uses your browser's Web Crypto API.</p></div><div><span class="highlight-num">02</span><strong>Private by default</strong><p>Generated passwords stay on your device.</p></div><div><span class="highlight-num">03</span><strong>Full control</strong><p>Adjust length and character combinations.</p></div></section>
+<section class="wrap information" aria-labelledby="how-heading">
+<div class="section-head"><span class="section-code">GUIDE / 02</span><div><h2 id="how-heading">How to generate a strong password</h2><p>A secure password should be long, unpredictable and unique to each account. You can create one in three steps.</p></div></div>
+<div class="steps"><article><span>01</span><h3>Choose your length</h3><p>Start with 16–20 random characters when the website permits. Longer passwords generally offer greater resistance to guessing attacks.</p></article><article><span>02</span><h3>Choose character types</h3><p>Select uppercase, lowercase, numbers and symbols based on the website's requirements. The generator includes at least one character from every selected group.</p></article><article><span>03</span><h3>Generate and save securely</h3><p>Copy your new password into a trusted password manager. Create a different password for every account and enable multifactor authentication where available.</p></article></div>
+</section>
+<section class="detail"><div class="wrap detail-grid"><div><span class="section-code">UNDER THE HOOD / 03</span><h2>Security is in the randomness.</h2></div><div><p>This generator uses <code>crypto.getRandomValues()</code> from the Web Crypto API, not <code>Math.random()</code>. Secure random values choose characters without favoring certain positions, and the final characters are shuffled securely.</p><p>Your browser generates the password directly. This tool does not send passwords to a remote API, save them to local storage or create a password history.</p><p class="disclaimer">The strength indicator is an approximate measure for randomly generated passwords based on the selected character pool; it is not a security audit or a guarantee against account compromise.</p></div></div></section>
+<section class="wrap tips"><div class="section-head"><span class="section-code">BEST PRACTICES / 04</span><div><h2>What makes a password secure?</h2><p>More characters and unique credentials matter more than memorizing complicated patterns.</p></div></div><div class="tips-grid"><article><h3>Make every password unique</h3><p>Reusing a password lets one breach put multiple accounts at risk. Generate new credentials for every service.</p></article><article><h3>Prioritize enough length</h3><p>Long random passwords are harder to guess. When supported, a randomly generated 20-character password is a strong starting point.</p></article><article><h3>Use a password manager</h3><p>A reputable password manager helps you store long, distinct passwords without remembering each one.</p></article><article><h3>Turn on MFA</h3><p>Multifactor authentication adds protection if a password is exposed. Prefer phishing-resistant methods when available.</p></article></div></section>
+<section class="wrap faq" aria-labelledby="faq-heading"><div class="section-head"><span class="section-code">QUESTIONS / 05</span><div><h2 id="faq-heading">Password generator FAQs</h2><p>Answers to common questions about random passwords and private generation.</p></div></div><div class="faq-list">
+<details><summary>Is this password generator free?</summary><p>Yes. Generate as many passwords as you need without an account or subscription.</p></details>
+<details><summary>Is it safe to generate passwords online?</summary><p>This page generates passwords locally using your browser's Web Crypto API. The generated password is not sent to our servers. As with any webpage, a compromised device or malicious browser extension can still expose sensitive information.</p></details>
+<details><summary>What is a good password length?</summary><p>For a randomly generated password, 16–20 characters is a useful default where allowed. Longer passwords generally provide more resistance to guessing. Always follow the site's password rules.</p></details>
+<details><summary>How do I make a password with letters, numbers and symbols?</summary><p>Select uppercase letters, lowercase letters, numbers and symbols under “Include characters,” choose a length and select Generate. The tool includes at least one character from each selected group.</p></details>
+<details><summary>What does “Avoid similar characters” mean?</summary><p>It removes characters that may look alike, including zero and capital O, and the number one and lowercase l. This can help when you need to type or read a password manually.</p></details>
+<details><summary>Are my passwords saved or tracked?</summary><p>No. This tool does not save generated passwords to local storage or send them to a generation service. If you copy a password, it is placed in your device's clipboard until the clipboard is replaced or cleared.</p></details>
+<details><summary>Should I reuse a generated password?</summary><p>No. Generate a unique password for every account, save it in a trusted password manager and turn on multifactor authentication where possible.</p></details>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><span>Free, private password generation.</span><div><span>Developed by <a href="https://arnavgiri.github.io/" target="_blank" rel="noopener noreferrer">Arnav Giri</a></span><a href="https://github.com/arnavgiri/arnavgiri.github.io/tree/main/password-generator" target="_blank" rel="noopener noreferrer">Open source on GitHub ↗</a></div></div></footer>
+</body></html>
