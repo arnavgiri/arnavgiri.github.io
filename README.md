@@ -26,3 +26,8 @@ Personal portfolio and project showcase for **Arnav Giri**.
 - `robots.txt`: Domain-level crawler instructions.
 
 Static website; no build process or dependencies.
+
+## Discovery
+
+- [RSS feed](https://arnavgiri.github.io/feed.xml) — portfolio and three published tools.
+- [Sitemap](https://arnavgiri.github.io/sitemap.xml) — canonical public pages.
