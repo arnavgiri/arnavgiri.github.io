@@ -1,7 +1,8 @@
 /* Arnav Giri — portfolio: mineral-paper / architectural restraint */
 :root{--bg:#e7eeeb;--paper:#f5f7f3;--ink:#15373c;--ink-soft:#496569;--muted:#657e7c;--rule:#bdceca;--accent:#1b6e67;--dark:#14383d;--light:#eff4ec;--white:#fff;--theme-primary:var(--accent);--theme-hover:var(--ink);color-scheme:light}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-y:scroll;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+html{scroll-behavior:smooth;overflow-y:scroll;}
+::-webkit-scrollbar{background:transparent;width:6px;height:6px}::-webkit-scrollbar-thumb{background:var(--accent)}::-webkit-scrollbar-thumb:hover{background:var(--theme-hover)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-optical-sizing:auto}
 a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
 a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
