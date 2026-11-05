@@ -7,7 +7,7 @@
     <language>en</language>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
     <atom:link href="https://arnavgiri.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 05 Nov 2026 05:01:57 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 05:27:05 GMT</lastBuildDate>
     <item>
       <title>Arnav Giri — Portfolio</title>
       <link>https://arnavgiri.github.io/</link>
@@ -42,6 +42,13 @@
       <guid isPermaLink="true">https://arnavgiri.github.io/age-calculator/</guid>
       <pubDate>Thu, 05 Nov 2026 05:01:50 GMT</pubDate>
       <description>Calculate your age by date of birth today or on any cut-off date, see total days lived and next birthday countdown.</description>
+    </item>
+    <item>
+      <title>Password Generator</title>
+      <link>https://arnavgiri.github.io/password-generator/</link>
+      <guid isPermaLink="true">https://arnavgiri.github.io/password-generator/</guid>
+      <pubDate>Thu, 05 Nov 2026 05:27:05 GMT</pubDate>
+      <description>Free secure password generator. Create strong random passwords with custom length, uppercase, numbers and symbols. Cryptographically random, private and browser-based.</description>
     </item>
   </channel>
 </rss>
