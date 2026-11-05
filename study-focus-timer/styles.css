@@ -374,7 +374,7 @@
     .reel-glyph {
       display: block;
       line-height: 1;
-      transform: translateY(.04em);
+      transform: translateY(-.06em);
     }
 
     /*
